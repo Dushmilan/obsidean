@@ -1,32 +1,14 @@
----
-date: 2026-07-20
-type: concept
-tags:
-  - dsa
-  - data-structures
-  - graphs
----
+A graph is a set of vertices (nodes) connected by edges, formally $G = (V, E)$. It's the most general data structure for modeling relationships — social networks, road maps, dependency chains, and network topology.
 
-# Graphs
+**The Intuition:** Think of a graph like a metro system. Stations are vertices, tracks are edges. Some tracks are one-way (directed), some are two-way (undirected). Some have ticket prices (weighted), some don't (unweighted). An adjacency list is like each station having a list of connected stations. An adjacency matrix is like a giant spreadsheet saying which stations connect.
 
-## Definition
-A set of vertices (nodes) connected by edges. $G = (V, E)$.
-
-## Types
-- **Directed vs Undirected** — edges have direction or not
-- **Weighted vs Unweighted** — edges have costs or not
-- **Cyclic vs Acyclic** — contains cycles or not
-- **Connected vs Disconnected** — all vertices reachable or not
-
-## Representations
+**The Math:**
 
 | Representation | Space | Edge Check |
 |----------------|-------|------------|
 | Adjacency Matrix | $O(V^2)$ | $O(1)$ |
 | Adjacency List | $O(V + E)$ | $O(\deg(v))$ |
 | Edge List | $O(E)$ | $O(E)$ |
-
-## Time Complexity
 
 | Operation | Adjacency List | Adjacency Matrix |
 |-----------|---------------|------------------|
@@ -35,18 +17,11 @@ A set of vertices (nodes) connected by edges. $G = (V, E)$.
 | Remove edge | $O(\deg(v))$ | $O(1)$ |
 | Remove vertex | $O(V + E)$ | $O(V^2)$ |
 
-## Key Patterns
-- [[08-Graphs-Patterns.md#Adjacency List|Adjacency list representation]]
-- [[08-Graphs-Patterns.md#Graph Traversal — BFS|BFS]]
-- [[08-Graphs-Patterns.md#Graph Traversal — DFS|DFS]]
+**Types:** Directed vs undirected, weighted vs unweighted, cyclic vs acyclic, connected vs disconnected.
 
-## Applications
-- Social networks
-- Maps / GPS navigation
-- Web crawling
-- Dependency resolution
-- Network routing
+**Key Patterns:** [[08-Graphs-Patterns#Adjacency List|Adjacency list representation]], [[08-Graphs-Patterns#Graph Traversal — BFS|BFS]], [[08-Graphs-Patterns#Graph Traversal — DFS|DFS]]
+
+**Applications:** Social networks, maps / GPS navigation, web crawling, dependency resolution, network routing.
 
 ---
-
 **See also:** [[../../Algo/09-Graph-Algos/Graph-Algos.md|Graph Algorithms]], [[../07-Trees/Trees.md|Trees]]

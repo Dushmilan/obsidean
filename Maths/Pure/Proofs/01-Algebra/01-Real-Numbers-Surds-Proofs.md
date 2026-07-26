@@ -2,7 +2,7 @@
 date: 2026-07-19
 type: proof
 tags: [maths, pure, proof, algebra, surds]
-topic: [[Pure/01-Algebra/01-Real-Numbers-Surds.md]]
+parent: [[Pure/01-Algebra/01-Real-Numbers-Surds]]
 ---
 
 # Real Numbers & Surds — Full Derivations

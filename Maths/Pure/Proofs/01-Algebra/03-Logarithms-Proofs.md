@@ -2,7 +2,7 @@
 date: 2026-07-19
 type: proof
 tags: [maths, pure, proof, algebra, logarithms]
-topic: [[Pure/01-Algebra/03-Logarithms.md]]
+parent: [[Pure/01-Algebra/03-Logarithms]]
 ---
 
 # Logarithms — Full Derivations

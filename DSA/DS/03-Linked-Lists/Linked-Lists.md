@@ -1,23 +1,8 @@
----
-date: 2026-07-20
-type: concept
-tags:
-  - dsa
-  - data-structures
-  - linked-lists
----
+A linked list is a linear data structure where elements (nodes) are connected via pointers. Each node contains data and a reference to the next node — giving you O(1) insertions at the head, but no random access.
 
-# Linked Lists
+**The Intuition:** Think of a scavenger hunt. Each clue (node) tells you where to go next. You can't jump to clue #5 directly — you have to follow the chain from the start. That's the trade-off: insertion is cheap (just redirect a pointer), but access by index requires walking the whole list.
 
-## Definition
-A linear data structure where elements (nodes) are connected via pointers. Each node contains data and a reference to the next node.
-
-## Types
-- **Singly linked** — each node points to the next node only
-- **Doubly linked** — each node points to both next and prev
-- **Circular linked** — last node points back to the head
-
-## Time Complexity
+**The Math:**
 
 | Operation | Singly | Doubly |
 |-----------|--------|--------|
@@ -30,21 +15,11 @@ A linear data structure where elements (nodes) are connected via pointers. Each 
 
 \* $O(1)$ with tail pointer
 
-## Key Patterns
-- [[03-Linked-Lists-Patterns.md#Traversal|Traversal]]
-- [[03-Linked-Lists-Patterns.md#Reverse a Linked List|Reverse]]
-- [[03-Linked-Lists-Patterns.md#Detect Cycle (Floyd's)|Cycle detection]]
-- [[03-Linked-Lists-Patterns.md#Find Middle Node|Middle node]]
-- [[03-Linked-Lists-Patterns.md#Merge Two Sorted Lists|Merge two sorted lists]]
-- [[03-Linked-Lists-Patterns.md#Remove Nth Node From End|Remove nth from end]]
-- [[03-Linked-Lists-Patterns.md#Intersection of Two Lists|Intersection]]
+**Types:** Singly linked (next only), doubly linked (next + prev), circular linked (last points to head).
 
-## Applications
-- Dynamic memory allocation (free lists)
-- Undo/redo in editors (doubly linked)
-- LRU cache
-- Adjacency lists for graphs
+**Key Patterns:** [[03-Linked-Lists-Patterns#Traversal|Traversal]], [[03-Linked-Lists-Patterns#Reverse a Linked List|Reverse]], [[03-Linked-Lists-Patterns#Detect Cycle (Floyd's)|Cycle detection]], [[03-Linked-Lists-Patterns#Find Middle Node|Middle node]], [[03-Linked-Lists-Patterns#Merge Two Sorted Lists|Merge two sorted lists]], [[03-Linked-Lists-Patterns#Remove Nth Node From End|Remove nth from end]], [[03-Linked-Lists-Patterns#Intersection of Two Lists|Intersection]]
+
+**Applications:** Dynamic memory allocation (free lists), undo/redo in editors (doubly linked), LRU cache, adjacency lists for graphs.
 
 ---
-
 **See also:** [[../04-Stacks/Stacks.md|Stacks]], [[../08-Graphs/Graphs.md|Graphs]]

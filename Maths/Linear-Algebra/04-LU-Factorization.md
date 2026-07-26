@@ -1,60 +1,27 @@
+# A = LU Factorization
+
+Gaussian elimination can be recorded as a product of two matrices: $L$ (lower triangular, holding the multipliers) and $U$ (upper triangular, holding the pivots), so that $A = LU$. Once you factor $A$, solving $A\mathbf{x} = \mathbf{b}$ becomes two cheap triangular solves instead of redoing elimination every time. This is the foundation of every modern numerical linear algebra package, and it's where [[02-Elimination-and-RREF|elimination]] becomes a reusable tool.
+
+**The Intuition:** Think of $L$ as a set of undo instructions — to recover $A$ from $U$, apply the elimination steps in reverse. $L$ is the recipe of elimination (which rows to subtract from which), and $U$ is the result (the staircase form). Together they reconstruct $A$ exactly. Each elimination step is a matrix, and multiplying all their inverses together gives $L$ — the multipliers line up cleanly because the inverses of elementary matrices are also elementary matrices.
+
+**The Math:** $A$ is $m \times n$. $L$ is lower triangular with 1s on the diagonal; the multiplier $l_{ij}$ used to eliminate entry $(i,j)$ goes directly into position $(i,j)$ of $L$. $U$ is upper triangular with pivots on the diagonal. When row exchanges are needed, $PA = LU$ where $P$ is a [[05-Transposes-Permutations-Spaces|permutation matrix]] recording the swaps. The factorization requires all pivots to be non-zero (or made non-zero by permutation). You can factor out the pivots into a diagonal matrix $D$ to get $A = LDU$, where $L$ and $U$ both have 1s on the diagonal. The cost of elimination is $n^3/3$ operations; once $L$ and $U$ are computed, solving for any new $\mathbf{b}$ costs only $n^2$ operations — a massive savings for multiple right-hand sides.
+
+**What does this mean for computation?** Factor once, solve many times. When the first pivot is zero, a permutation is mandatory — you need $PA = LU$, not just $A = LU$.
+
+**Setup:** $A = \begin{bmatrix} 2 & 1 & 1 \\ 4 & 3 & 3 \\ 8 & 7 & 9 \end{bmatrix}$. Find the LU factorization.
+
+**Solution:** Elimination gives multipliers $l_{21} = 2$, $l_{31} = 4$, $l_{32} = 2$. So $U = \begin{bmatrix} 2 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 2 \end{bmatrix}$ and $L = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 4 & 2 & 1 \end{bmatrix}$.
+
+**Key insight:** The multipliers go directly into the slots of $L$. That's the memory of elimination.
+
+**Setup:** Using $A = LU$ from above, solve $A\mathbf{x} = \mathbf{b}$ where $\mathbf{b} = (1, 3, 5)^T$.
+
+**Solution:** First solve $L\mathbf{y} = \mathbf{b}$ (forward substitution): $\mathbf{y} = (1, 1, -1)^T$. Then solve $U\mathbf{x} = \mathbf{y}$ (back substitution): $\mathbf{x} = (1, 2, -0.5)^T$.
+
+**Key insight:** Two triangular solves (each $n^2$ cost) instead of redoing elimination.
+
+**Setup:** $A = \begin{bmatrix} 0 & 1 \\ 2 & 3 \end{bmatrix}$. Factor with row exchanges.
+
+**Solution:** The first pivot is zero, so swap rows: $P = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$, $PA = \begin{bmatrix} 2 & 3 \\ 0 & 1 \end{bmatrix}$. Now $L = I$ and $U = PA$.
+
 ---
-date: 2026-07-21
-type: linear-algebra-cluster
-tags: [linear-algebra, strang]
-lectures: [4]
-prereq_clusters: ["02"]
-status: complete
-source: manual
----
-
-# 04 — $A = LU$ Factorization
-
-## Concept Statement
-Recognise that Gaussian elimination's record of action can be collapsed into **two triangular matrices** — a lower-triangular $L$ holding the multipliers and an upper-triangular $U$ holding the pivots.
-
-## Lecture Sources
-- Strang MIT 18.06, Lecture 4: *Factorization into $A = LU$*
-
-## Core Material
-
-### The Factorization (no row exchanges)
-$$A = LU$$
-- $L$ — lower triangular, **1s on the diagonal**, multipliers below diagonal in their exact $l_{ij}$ slots.
-- $U$ — upper triangular, pivots on the diagonal.
-
-### Why $L$ Beats the $E$-Product
-
-Elimination matrices $E_{32}E_{31}E_{21}$ applied to $A$ all *interact* — multipliers re-mix when they meet. But their inverses $E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$ line up *cleanly*: each $l_{ij}$ lands precisely in position $(i,j)$ of $L$. Hence:
-$$L = E^{-1} = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$$
-
-### When Row Exchanges Are Required
-$$PA = LU$$
-$P$ is the cumulative record of swaps required to keep pivots non-zero.
-
-### Computational Cost
-For an $n \times n$ matrix:
-- $A \to U$ ~ $\tfrac{1}{3} n^3$ operations (elimination dominates)
-- solve triangular systems ~ $n^2$
-- elimination dominates everything else for large $n$
-
-### Alternative: $A = LDU$
-When pivots are factored into a separate diagonal matrix $D$, the resulting upper matrix has **1s on the diagonal**, mirroring $L$.
-$$A = LDU, \quad D = \text{diag of pivots}$$
-
-## Cross-Cluster Links
-- **Prereq**: [[02-Elimination-and-RREF]] (elimination must come first)
-- **Forward**: [[05-Transposes-Permutations-Spaces]] (permutation and transpose mechanics)
-- **Algorithmic flavour**: [[08-Four-Fundamental-Subspaces]] (decomposing $A$ into pieces)
-
-## Thematic Summary
-$L$ and $U$ are the *algebraic shadow* of elimination. By packaging the algorithm into a product, you turn a 30-page derivation into a chain of matrix identities. $A = LU$ is the foundation of every modern numerical linear algebra package: in practice, sparse solvers store $L$ and $U$ to factor once and backsolve many times.
-
-## Glossary
-
-| Term | Definition |
-|------|------------|
-| **Lower Triangular Matrix ($L$)** | All entries above the diagonal are zero. |
-| **Upper Triangular Matrix ($U$)** | All entries below the diagonal are zero. |
-| **Permutation Matrix ($P$)** | Identity with rows reordered; $P^T = P^{-1}$. |
-| **Diagonal Matrix ($D$)** | All off-diagonal entries are 0. Used in $A = LDU$ to extract pivots. |

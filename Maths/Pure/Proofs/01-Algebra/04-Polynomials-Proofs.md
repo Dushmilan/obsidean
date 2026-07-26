@@ -2,7 +2,7 @@
 date: 2026-07-19
 type: proof
 tags: [maths, pure, proof, algebra, polynomials]
-topic: [[Pure/01-Algebra/04-Polynomials.md]]
+parent: [[Pure/01-Algebra/04-Polynomials]]
 ---
 
 # Polynomials — Full Derivations

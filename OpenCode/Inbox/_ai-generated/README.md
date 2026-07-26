@@ -23,9 +23,15 @@ tags: [ai-generated, workflow]
 
 ## What Goes Here
 
-- Physics concept notes (Units 2-7)
+- Physics concept notes (Units 2-7) — **Moved to `Physics/`** (2026-07-23)
 - Linear Algebra clusters (L16-L35, if generated)
 - Audio ML research summaries (future)
+
+## Completed Batches
+
+| Batch | Files | Status | Destination |
+|-------|-------|--------|-------------|
+| Physics Units 2-7 | 38 files (6 hubs + 32 concepts) | ✅ Moved | `Physics/02-Mechanics/` through `Physics/07-Electronics/` |
 
 ## What Doesn't Go Here
 

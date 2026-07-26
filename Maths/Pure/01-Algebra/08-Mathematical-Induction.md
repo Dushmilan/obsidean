@@ -1,169 +1,51 @@
+# 1.8 Mathematical Induction
+
+Mathematical induction proves a statement $P(n)$ is true for all natural numbers by verifying a base case and proving an inductive step. It is the domino principle formalised as a proof technique: if you knock over the first domino (base case) and ensure each domino knocks over the next (inductive step), then all dominoes fall. This simple idea is surprisingly powerful — it can prove summation formulas, divisibility results, inequalities, and properties of recursively defined sequences.
+
+**The Intuition:** Imagine an infinite line of dominoes. If you knock over the first one, and each domino is close enough to knock over the next, then all dominoes fall. A chain of truth: $P(1)$ is true, $P(1) \Rightarrow P(2)$, $P(2) \Rightarrow P(3)$, and so on. By chaining these implications, $P(n)$ is true for every $n$.
+
+**The Math:**
+
+- **Standard induction:** Verify $P(1)$, then prove $P(k) \Rightarrow P(k+1)$ for all $k \ge 1$
+- **Strong induction:** Verify $P(1)$, then prove $P(1) \land \cdots \land P(k) \Rightarrow P(k+1)$
+- **Starting at $n_0$:** Verify $P(n_0)$, then prove $P(k) \Rightarrow P(k+1)$ for $k \ge n_0$
+- **Two-step:** Verify $P(1), P(2)$, then prove $P(k) \land P(k+1) \Rightarrow P(k+2)$
+
+The inductive hypothesis is an ASSUMPTION, not a proof. You assume $P(k)$ is true for some $k$, then use it to prove $P(k+1)$. You must reach EXACTLY $P(k+1)$ — if your final line is "close to" but not identical, the proof is incomplete.
+
+**What does this mean for Pure Mathematics?** Induction is the only rigorous method for proving statements about all natural numbers, and it underpins much of number theory and discrete mathematics. Strong induction is useful when the truth of $P(k+1)$ depends on multiple previous cases, not just the immediate predecessor.
+
+### Example 1: Prove $\sum_{r=1}^n r^2 = \frac{n(n+1)(2n+1)}{6}$
+
+**Setup:** Summation formula.
+
+**Solution:** Base ($n=1$): LHS = $1$, RHS = $\frac{1 \cdot 2 \cdot 3}{6} = 1$. Assume $P(k)$: $\sum_{r=1}^k r^2 = \frac{k(k+1)(2k+1)}{6}$. Prove $P(k+1)$: add $(k+1)^2$ to both sides and simplify:
+$\frac{k(k+1)(2k+1)}{6} + (k+1)^2 = \frac{(k+1)[k(2k+1) + 6(k+1)]}{6} = \frac{(k+1)(k+2)(2k+3)}{6} = \frac{(k+1)((k+1)+1)(2(k+1)+1)}{6}$
+
+**Key insight:** Add the $(k+1)$th term to both sides and simplify to the target form.
+
+### Example 2: Prove $7^n - 2^n$ is divisible by 5
+
+**Setup:** Divisibility statement.
+
+**Solution:** Base ($n=1$): $7 - 2 = 5$. Assume $P(k)$: $7^k - 2^k = 5m$. Prove $P(k+1)$: $7^{k+1} - 2^{k+1} = 7 \cdot 7^k - 2 \cdot 2^k = 7(7^k - 2^k) + 7 \cdot 2^k - 2 \cdot 2^k = 7(5m) + 5 \cdot 2^k = 5(7m + 2^k)$.
+
+**Key insight:** Express $a^{k+1} - b^{k+1}$ using $a^k - b^k$ to factor out the divisor.
+
+### Example 3: Prove $2^n > n^2$ for $n \ge 5$
+
+**Setup:** Inequality statement.
+
+**Solution:** Base ($n=5$): $32 > 25$. Assume $P(k)$: $2^k > k^2$. Prove $P(k+1)$: $2^{k+1} = 2 \cdot 2^k > 2k^2$. Need $2k^2 \ge (k+1)^2 \iff (k-1)^2 \ge 2$, true for $k \ge 3$, hence for $k \ge 5$.
+
+**Key insight:** For inequalities, you often need to prove an auxiliary inequality as part of the inductive step.
+
+### Example 4: Prove $u_n = 3^n - 1$ where $u_1 = 2$, $u_{n+1} = 3u_n + 2$
+
+**Setup:** Recurrence relation.
+
+**Solution:** Base ($n=1$): $3^1 - 1 = 2 = u_1$. Assume $P(k)$: $u_k = 3^k - 1$. Prove $P(k+1)$: $u_{k+1} = 3u_k + 2 = 3(3^k - 1) + 2 = 3^{k+1} - 3 + 2 = 3^{k+1} - 1$.
+
+**Key insight:** Substitute the inductive hypothesis directly into the recurrence relation.
+
 ---
-date: 2026-07-19
-type: concept
-tags: [maths, pure, a-level, algebra, induction]
-parent: [[Pure/01-Algebra.md]]
-proofs: [[Pure/Proofs/01-Algebra/08-Mathematical-Induction-Proofs.md]]
-prerequisites: []
----
-
-# Mathematical Induction
-
-## Principle of Mathematical Induction (PMI)
-
-To prove statement $P(n)$ true for all $n \in \mathbb{N}$ (or $n \ge n_0$):
-
-1. **Base Case:** Prove $P(1)$ (or $P(n_0)$) is true.
-2. **Inductive Step:** Assume $P(k)$ true for some $k \ge 1$ (inductive hypothesis). Prove $P(k+1)$ is true using this assumption.
-3. **Conclusion:** $P(n)$ true for all $n \in \mathbb{N}$ (or $n \ge n_0$).
-
-**Why it works:** Domino effect — base case knocks over $P(1)$, inductive step ensures each knocks the next.
-
-## Variants
-
-| Type | Base | Inductive Step |
-|------|------|----------------|
-| **Standard** | $P(1)$ | $P(k) \Rightarrow P(k+1)$ |
-| **Strong** | $P(1)$ | $P(1) \land \cdots \land P(k) \Rightarrow P(k+1)$ |
-| **Starting at $n_0$** | $P(n_0)$ | $P(k) \Rightarrow P(k+1)$ for $k \ge n_0$ |
-| **Two-step** | $P(1), P(2)$ | $P(k) \land P(k+1) \Rightarrow P(k+2)$ |
-
-## Common Proof Templates
-
-### 1. Summation Formulas
-$\sum_{r=1}^n f(r) = F(n)$
-**Inductive step:** $LHS_{k+1} = LHS_k + f(k+1) = F(k) + f(k+1) \to$ simplify to $F(k+1)$
-
-### 2. Divisibility
-Prove $a_n$ divisible by $m$.
-**Inductive step:** $a_{k+1} = a_k \cdot \text{something} + \text{multiple of } m$
-
-### 3. Inequalities
-Prove $f(n) \ge g(n)$ or similar.
-**Inductive step:** $f(k+1) = f(k) + \text{term} \ge g(k) + \text{term} \to$ show $\ge g(k+1)$
-
-### 4. Recurrence Relations
-Given $u_{n+1} = f(u_n)$, prove formula for $u_n$.
-**Inductive step:** Substitute formula for $u_k$ into recurrence.
-
-### 5. Matrix Powers
-Prove $A^n = \text{formula}$.
-**Inductive step:** $A^{k+1} = A^k \cdot A$
-
-## Step-by-Step Structure
-
-```
-**Proof by Induction**
-
-**Statement:** Let P(n) be "..." for n ∈ ℕ.
-
-**Base Case (n = 1):**
-LHS = ...
-RHS = ...
-LHS = RHS, so P(1) is true.
-
-**Inductive Step:**
-Assume P(k) is true for some k ∈ ℕ.
-That is, [state P(k) explicitly].
-
-We need to prove P(k+1): [state P(k+1) explicitly].
-
-[Manipulation using P(k) to reach P(k+1)]
-
-Therefore, P(k) ⇒ P(k+1).
-
-**Conclusion:**
-By the Principle of Mathematical Induction, P(n) is true for all n ∈ ℕ.
-```
-
-## Worked Examples
-
-### Example 1: Summation — $\sum_{r=1}^n r^2 = \frac{n(n+1)(2n+1)}{6}$
-**Base ($n=1$):** LHS = $1^2 = 1$, RHS = $\frac{1\cdot2\cdot3}{6} = 1$ ✓
-
-**Assume $P(k)$:** $\sum_{r=1}^k r^2 = \frac{k(k+1)(2k+1)}{6}$
-
-**Prove $P(k+1)$:**
-$\sum_{r=1}^{k+1} r^2 = \frac{k(k+1)(2k+1)}{6} + (k+1)^2$
-$= \frac{(k+1)[k(2k+1) + 6(k+1)]}{6}$
-$= \frac{(k+1)(2k^2+7k+6)}{6}$
-$= \frac{(k+1)(k+2)(2k+3)}{6}$
-$= \frac{(k+1)((k+1)+1)(2(k+1)+1)}{6}$ ✓
-
-### Example 2: Divisibility — $7^n - 2^n$ divisible by 5
-**Base ($n=1$):** $7-2=5$ ✓
-
-**Assume $P(k)$:** $7^k - 2^k = 5m$
-
-**Prove $P(k+1)$:**
-$7^{k+1} - 2^{k+1} = 7\cdot7^k - 2\cdot2^k$
-$= 7(7^k - 2^k) + 7\cdot2^k - 2\cdot2^k$
-$= 7(5m) + 5\cdot2^k = 5(7m + 2^k)$ ✓
-
-### Example 3: Inequality — $2^n > n^2$ for $n \ge 5$
-**Base ($n=5$):** $32 > 25$ ✓
-
-**Assume $P(k)$:** $2^k > k^2$, $k \ge 5$
-
-**Prove $P(k+1)$:**
-$2^{k+1} = 2\cdot2^k > 2k^2$ (by hypothesis)
-Need $2k^2 \ge (k+1)^2 = k^2 + 2k + 1$
-$\iff k^2 - 2k - 1 \ge 0 \iff (k-1)^2 \ge 2$
-True for $k \ge 3$, hence for $k \ge 5$ ✓
-
-### Example 4: Recurrence — $u_1=2$, $u_{n+1}=3u_n+2$. Prove $u_n = 3^n - 1$.
-**Base ($n=1$):** $3^1-1=2$ ✓
-
-**Assume $P(k)$:** $u_k = 3^k - 1$
-
-**Prove $P(k+1)$:**
-$u_{k+1} = 3u_k + 2 = 3(3^k - 1) + 2 = 3^{k+1} - 3 + 2 = 3^{k+1} - 1$ ✓
-
-### Example 5: Trigonometric — $\cos\theta \cdot \cos2\theta \cdots \cos2^{n-1}\theta = \frac{\sin2^n\theta}{2^n\sin\theta}$
-**Base ($n=1$):** LHS = $\cos\theta$, RHS = $\frac{\sin2\theta}{2\sin\theta} = \frac{2\sin\theta\cos\theta}{2\sin\theta} = \cos\theta$ ✓
-
-**Assume $P(k)$:** product up to $\cos2^{k-1}\theta = \frac{\sin2^k\theta}{2^k\sin\theta}$
-
-**Prove $P(k+1)$:**
-Multiply both sides by $\cos2^k\theta$:
-LHS = product up to $\cos2^k\theta$
-RHS = $\frac{\sin2^k\theta}{2^k\sin\theta}\cos2^k\theta = \frac{2\sin2^k\theta\cos2^k\theta}{2^{k+1}\sin\theta} = \frac{\sin2^{k+1}\theta}{2^{k+1}\sin\theta}$ ✓
-
-## Problem Patterns (A/L)
-
-| Pattern | Base | Inductive Strategy |
-|---------|------|-------------------|
-| $\sum f(r) = F(n)$ | $n=1$ | Add $f(k+1)$ to both sides, simplify |
-| $a^n \pm b^n$ divisible | $n=1$ | Express $a^{k+1} \pm b^{k+1}$ using $a^k \pm b^k$ |
-| $f(n) > g(n)$ | Find smallest $n_0$ | Use $f(k+1) = f(k) \times \text{something}$ |
-| Recurrence $u_{n+1} = f(u_n)$ | $n=1$ | Substitute formula into recurrence |
-| Matrix $A^n$ | $n=1$ | $A^{k+1} = A^k \cdot A$ |
-| Trig product | $n=1$ | Multiply by next factor, use double-angle |
-
-## Common Traps
-- ❌ Not stating $P(n)$ clearly at start
-- ❌ Forgetting base case (or checking wrong base)
-- ❌ Inductive hypothesis: assuming what you need to prove
-- ❌ Using $P(k+1)$ to prove $P(k)$ (backwards)
-- ❌ Not simplifying to exactly the target form
-- ❌ Divisibility: not showing the extra term is multiple of divisor
-- ❌ Inequalities: not checking base case for the actual starting $n$
-- ❌ "Assume true for all $k$" — should be "for some $k$"
-
-## Cross-References
-- [[Pure/01-Algebra/06-Permutations-Combinations.md]] — prove $\binom{n}{r}$ identities
-- [[Pure/01-Algebra/07-Binomial-Theorem.md]] — prove $(1+x)^n$ expansion
-- [[Pure/08-Sequences-Series/01-Arithmetic-Progression.md]] — sum formulas
-- [[Pure/08-Sequences-Series/02-Geometric-Progression.md]] — sum formulas
-- [[Pure/04-Calculus/11-Applications-DE.md]] — induction in recurrence solutions
-
-## Quick Reference
-**PMI Structure:**
-1. Let $P(n)$ be "..." for $n \in \mathbb{N}$.
-2. Base: $P(1)$ true because ...
-3. Assume $P(k)$ true for some $k \in \mathbb{N}$.
-4. Prove $P(k+1)$ using $P(k)$.
-5. Conclude: $P(n)$ true $\forall n \in \mathbb{N}$.
-
-**Strong Induction:** Assume $P(1), \ldots, P(k)$ all true, prove $P(k+1)$.
-**Starting at $n_0$:** Base $P(n_0)$, then $P(k) \Rightarrow P(k+1)$ for $k \ge n_0$.

@@ -28,7 +28,7 @@ tags: [maths, pure, a-level, analytical-geometry]
 
 ## Proofs
 
-📁 [[Pure/Proofs/02-Analytical-Geometry/]] — Full derivations for each subtopic
+📁 Full derivations for each subtopic (proofs pending)
 
 ---
 

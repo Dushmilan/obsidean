@@ -1,49 +1,33 @@
-## Reflex Agent
+Search is the foundation of AI planning — given a start state and a goal, find a sequence of actions that gets you there. It starts simple (reflex agents that just react) and builds up to planning agents that think ahead.
 
-- Reflex agents:
-	- Choose actions based on current percept (and maybe memory).
-	- May have memory or model of world's current state.
-	- Do not consider the future consequences of their actions.
-	- **Consider How world IS.**
+**The Intuition:** A reflex agent is like a person who only reacts to what's in front of them — they don't plan. A planning agent is like someone using a GPS: they consider "what if I take this road?" and evaluate consequences before moving. Search is the formal framework for that "what if?" reasoning.
 
-- Can a reflex agent be rational ?
-	No
-## Planning Agents
+**The Math:**
 
-- Planning agents:
-	- Asks "What if?".
-	- Decisions based on (hypothesized) consequences of actions.
-	- Must have a model how the world evolves in response to actions.
-	- Must formulate a goal (test).
-	- **Consider how the world would be**.
+**Reflex Agents:**
+- Choose actions based on current percept (and maybe memory)
+- May have a model of the world's current state
+- Do NOT consider future consequences
+- Consider how the world IS
+- Cannot be rational (no lookahead)
 
-- Optimal vs complete planning
-- Planning vs replanning
+**Planning Agents:**
+- Ask "What if?" — decisions based on consequences of actions
+- Must have a model of how the world evolves
+- Must formulate a goal (test)
+- Consider how the world WOULD BE
+- Can be optimal or complete; can plan or replan
 
+**Search Problem Components:**
+- **State space** — every detail of the environment (abstracted for planning)
+- **Successor function** — actions and their costs
+- **Start state** and **goal test**
+- **Solution** — a sequence of actions (plan) from start to goal
 
-## Search Problems
+**State Space Graph:** Nodes are abstracted world configurations, arcs represent successor actions, goal nodes form the goal test set.
 
-- A search problem consists of:
-	- A state space
-	- A successor function (with actions, cost)
-	- A start state and a goal test.
-- A solution is a sequence of actions (a plan) which transforms the start state to a goal state.
-
-Search problems are models
-
-### What is in a state space?
-
-- The world states includes every last detail of the environment.
-- A search state keeps only the details needed for planning (Abstraction).
-	- Problem : Pathing
-		- States: (x ,y) location.
-		- Actions : Next state where you are
-		- Successor: Updates location only.
-		- Goal test : is (x ,y)=END.
-
-## State Space Graphs and Search Trees.
-
- - State space graph : A mathematical representation of a search problem.
-	 - Nodes are (abstracted) world configs.
-	 - Arcs represent successors (action results).
-	 - The goal test is a set of goal nodes (maybe only one).
+**Example — Pathing:**
+- States: $(x, y)$ location
+- Actions: move to adjacent cells
+- Successor: updates location
+- Goal test: is $(x, y) = \text{END}$?

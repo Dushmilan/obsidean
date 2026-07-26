@@ -2,7 +2,7 @@
 date: 2026-07-19
 type: proof
 tags: [maths, pure, proof, algebra, indices]
-topic: [[Pure/01-Algebra/02-Indices.md]]
+parent: [[Pure/01-Algebra/02-Indices]]
 ---
 
 # Indices (Exponents) — Full Derivations

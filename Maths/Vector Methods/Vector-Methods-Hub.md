@@ -3,70 +3,57 @@ date: 2026-07-23
 type: hub
 tags: [maths, vector-methods, stewart-calculus]
 ---
-
-# Vector Methods — Stewart Calculus
+[[Maths]] 
+# Vector Methods
 
 > James Stewart, *Calculus: Early Transcendentals*, Chapters 12–13
+> Covers A/L Pure Mathematics Topic 5 (Vectors) + Stewart Calculus content
 
 ---
 
 ## Chapter 12: Vectors and the Geometry of Space
 
-| # | Topic | Hub | Concepts | Status |
-|---|-------|-----|----------|--------|
-| 12.1 | **3D Coordinate Systems** | [[12.1-3D-Coordinate-Systems]] | 12 | Done |
-| 12.2 | **Vectors** | [[12.2-Vectors]] | 22 | Done |
-| 12.3 | **Dot Product** | [[12.3-Dot-Product]] | 8 | Done |
-| 12.4 | **Cross Product** | [[12.4-Cross-Product]] | 15 | Done |
-| 12.5 | **Equations of Lines and Planes** | [[12.5-Equations-of-Lines-and-Planes]] | 7 | Done |
-| 12.6 | **Cylinders and Quadratic Surfaces** | [[12.6-Cylinders-and-Quadratic-Surfaces]] | 7 | Done |
-
-**Ch 12 Total:** 6 sections, 71 atomic concepts
+| # | Topic | File |
+|---|-------|------|
+| 12.1 | **3D Coordinate Systems** | [[12.1-3D-Coordinate-Systems]] |
+| 12.2 | **Vectors** | [[12.2-Vectors]] |
+| 12.3 | **Dot Product** | [[12.3-Dot-Product]] |
+| 12.4 | **Cross Product & Triple Products** | [[12.4-Cross-Product]] |
+| 12.5 | **Equations of Lines and Planes** | [[12.5-Equations-of-Lines-and-Planes]] |
+| 12.6 | **Cylinders and Quadratic Surfaces** | [[12.6-Cylinders-and-Quadratic-Surfaces]] |
 
 ---
 
 ## Chapter 13: Vector Functions
 
-| # | Topic | Hub | Concepts | Status |
-|---|-------|-----|----------|--------|
-| 13.1 | **Vector Functions and Space Curves** | [[13.1-Vector-Functions-and-Space-Curves]] | 6 | Done |
-| 13.2 | **Derivatives and Integrals** | [[13.2-Derivatives-and-Integrals]] | 6 | Done |
-| 13.3 | **Arc Length and Curvature** | [[13.3-Arc-Length-and-Curvature]] | 8 | Done |
-| 13.4 | **Motion in Space** | [[13.4-Motion-in-Space]] | 9 | Done |
-
-**Ch 13 Total:** 4 sections, 29 atomic concepts
-
----
-
-## Grand Total: 10 sections, 100 atomic concepts
+| # | Topic | File |
+|---|-------|------|
+| 13.1 | **Vector Functions and Space Curves** | [[13.1-Vector-Functions-and-Space-Curves]] |
+| 13.2 | **Derivatives and Integrals** | [[13.2-Derivatives-and-Integrals]] |
+| 13.3 | **Arc Length and Curvature** | [[13.3-Arc-Length-and-Curvature]] |
+| 13.4 | **Motion in Space** | [[13.4-Motion-in-Space]] |
 
 ---
 
 ## Quick Navigation
 
-### Chapter 12
 - **Start:** [[12.1-3D-Coordinate-Systems|3D Coordinates]]
-- **End:** [[12.6-Cylinders-and-Quadratic-Surfaces|Quadric Surfaces]]
-
-### Chapter 13
-- **Start:** [[13.1-Vector-Functions-and-Space-Curves|Vector Functions]]
 - **End:** [[13.4-Motion-in-Space|Motion in Space]]
 
 ---
 
-## Progress Summary
+## 🔗 Physics Applications
 
-```
-┌─────────────────────┬──────────┬──────────┬────────┐
-│ Section             │ Sections │ Concepts │ Status │
-├─────────────────────┼──────────┼──────────┼────────┤
-│ Ch 12: Vectors      │    6     │    71    │ Done   │
-│ Ch 13: Vec Functions│    4     │    29    │ Done   │
-├─────────────────────┼──────────┼──────────┼────────┤
-│ Total               │   10     │   100    │ Done   │
-└─────────────────────┴──────────┴──────────┴────────┘
-```
+| Physics Topic | File | Connection |
+|---------------|------|------------|
+| Scalars & Vectors | [[Physics/01-Measurement/01.3-Scalars-Vectors|1.3 Scalars & Vectors]] | Vector addition, resolution |
+| Kinematics | [[Physics/02-Mechanics/02.1-Kinematics|2.1 Kinematics]] | Displacement, velocity, acceleration |
+| Dynamics | [[Physics/02-Mechanics/02.2-Dynamics|2.2 Dynamics]] | Force vectors, free-body diagrams |
+| Circular Motion | [[Physics/02-Mechanics/02.4-Circular-Motion|2.4 Circular Motion]] | Centripetal acceleration |
+| Rotational Dynamics | [[Physics/02-Mechanics/02.7-Rotational-Dynamics|2.7 Rotational Dynamics]] | Torque = r x F |
+| Electric Fields | [[Physics/05-Electricity-Magnetism/05.1-Electric-Fields|5.1 Electric Fields]] | Field vectors, Coulomb's law |
+| Magnetic Fields | [[Physics/05-Electricity-Magnetism/05.4-Magnetic-Fields|5.4 Magnetic Fields]] | F = qv x B |
 
 ---
 
-*Last updated: 2026-07-23 | Vault root: `Maths/`*
+*Last updated: 2026-07-26 | Vault root: `Maths/`*

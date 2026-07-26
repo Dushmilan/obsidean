@@ -1,24 +1,8 @@
----
-date: 2026-07-20
-type: concept
-tags:
-  - dsa
-  - data-structures
-  - queues
----
+A queue is a FIFO (First In, First Out) data structure — elements are added at the rear and removed from the front. It's the backbone of BFS, task scheduling, and buffering systems.
 
-# Queues
+**The Intuition:** Think of a checkout line at a grocery store. The first person in line gets served first. New people join at the back. That's FIFO. A priority queue is like a hospital ER — the most critical patient (highest priority) gets seen next, regardless of arrival order.
 
-## Definition
-A FIFO (First In, First Out) data structure. Elements are added at the rear and removed from the front.
-
-## Types
-- **Simple Queue** — FIFO
-- **Circular Queue** — rear wraps to front, efficient space usage
-- **Deque (Double-Ended Queue)** — insert/remove at both ends
-- **Priority Queue** — elements ordered by priority
-
-## Time Complexity
+**The Math:**
 
 | Operation | Queue | Deque | Priority Queue |
 |-----------|-------|-------|----------------|
@@ -27,20 +11,11 @@ A FIFO (First In, First Out) data structure. Elements are added at the rear and 
 | Peek (front) | $O(1)$ | $O(1)$ | $O(1)$ |
 | Search | $O(n)$ | $O(n)$ | $O(n)$ |
 
-## Key Patterns
-- [[05-Queues-Patterns.md#Basic Queue Operations|Basic operations]]
-- [[05-Queues-Patterns.md#Circular Queue|Circular queue]]
-- [[05-Queues-Patterns.md#Deque as Stack / Queue|Deque usage]]
-- [[05-Queues-Patterns.md#First Non-Repeating Character in Stream|First non-repeating character]]
-- [[05-Queues-Patterns.md#Sliding Window Maximum|Sliding window maximum]]
+**Types:** Simple FIFO queue, circular queue (rear wraps to front for efficient space), deque (double-ended, insert/remove at both ends), priority queue (elements ordered by priority).
 
-## Applications
-- BFS on graphs/trees
-- Task scheduling
-- Buffering (I/O, streaming)
-- Cache (LRU with deque)
-- Breadth-first traversal
+**Key Patterns:** [[05-Queues-Patterns#Basic Queue Operations|Basic operations]], [[05-Queues-Patterns#Circular Queue|Circular queue]], [[05-Queues-Patterns#Deque as Stack / Queue|Deque usage]], [[05-Queues-Patterns#First Non-Repeating Character in Stream|First non-repeating character]], [[05-Queues-Patterns#Sliding Window Maximum|Sliding window maximum]]
+
+**Applications:** BFS on graphs/trees, task scheduling, buffering (I/O, streaming), cache (LRU with deque), breadth-first traversal.
 
 ---
-
 **See also:** [[../04-Stacks/Stacks.md|Stacks]], [[../../Algo/08-Dynamic-Programming/Dynamic-Programming.md|DP]], [[../../Algo/04-Sliding-Window/Sliding-Window.md|Sliding Window]]

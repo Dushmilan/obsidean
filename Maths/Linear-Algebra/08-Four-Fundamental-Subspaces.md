@@ -1,55 +1,20 @@
----
-date: 2026-07-21
-type: linear-algebra-cluster
-tags: [linear-algebra, strang]
-lectures: [10]
-prereq_clusters: ["05", "06", "07"]
-status: complete
-source: manual
----
+# The Four Fundamental Subspaces
 
-# 08 — The Four Fundamental Subspaces
+Every $m \times n$ matrix $A$ of rank $r$ defines four subspaces that together describe the complete structure of the linear system. Two live in $\mathbb{R}^n$ (the input room) and two in $\mathbb{R}^m$ (the output room). This is the architectural blueprint of the entire course — every later result on [[12-Orthogonal-Vectors-Subspaces|orthogonality]], [[13-Projections-Least-Squares|projections]], and least squares is a re-reading of this picture. It builds directly on [[05-Transposes-Permutations-Spaces|subspace basics]] and [[07-Independence-Basis-Dimension|dimension counts]].
 
-## Concept Statement
-State the master theorem: every $m \times n$ matrix $A$ of rank $r$ defines four subspaces, two in $\mathbb{R}^n$ and two in $\mathbb{R}^m$, with dimensions locked to $(r, n-r, r, m-r)$.
+**The Intuition:** Think of $A$ as a machine with an input room ($\mathbb{R}^n$) and an output room ($\mathbb{R}^m$). The input room splits into "useful inputs" (the row space $C(A^T)$) and "wasted inputs" (the nullspace $N(A)$). The output room splits into "reachable outputs" (the column space $C(A)$) and "unreachable outputs" (the left nullspace $N(A^T)$). The rank $r$ is the bridge connecting them.
 
-## Lecture Sources
-- Strang MIT 18.06, Lecture 10: *The Four Fundamental Subspaces*
+**The Math:** $A$ is $m \times n$ with rank $r$. The four subspaces:
 
-## Core Material
+- $C(A)$ — column space in $\mathbb{R}^m$, dimension $r$. All possible outputs $A\mathbf{x}$.
+- $N(A)$ — nullspace in $\mathbb{R}^n$, dimension $n - r$. All inputs crushed to zero.
+- $C(A^T)$ — row space in $\mathbb{R}^n$, dimension $r$. What $A$ "sees."
+- $N(A^T)$ — left nullspace in $\mathbb{R}^m$, dimension $m - r$. The "observers" that see no effect of $A$.
 
-### The Four Spaces
+The dimension counts are locked: $r + (n - r) = n$ in $\mathbb{R}^n$ and $r + (m - r) = m$ in $\mathbb{R}^m$. The two subspaces in each room are complementary — they fill it completely. A key revelation: row rank equals column rank. This follows from RREF having the same number of pivot rows as pivot columns. The left nullspace $N(A^T)$ has a physical meaning in [[10-Graphs-Networks-Incidence|network analysis]]: it's the set of current distributions satisfying Kirchhoff's Current Law. Don't confuse $C(A)$ with $C(A^T)$ — they live in different spaces ($\mathbb{R}^m$ vs $\mathbb{R}^n$).
 
-| Subspace | Where it lives | Dimension | What it is |
-|----------|----------------|-----------|------------|
-| $C(A)$ | $\mathbb{R}^m$ | $r$ | span of columns of $A$ |
-| $N(A)$ | $\mathbb{R}^n$ | $n - r$ | inputs mapped to $0$ |
-| $C(A^T)$ (row space) | $\mathbb{R}^n$ | $r$ | span of rows of $A$ |
-| $N(A^T)$ (left nullspace) | $\mathbb{R}^m$ | $m - r$ | $\mathbf{y}$ such that $\mathbf{y}^T A = \mathbf{0}^T$ |
+**Setup:** $A = \begin{bmatrix} 1 & 2 \\ 3 & 6 \\ 2 & 4 \end{bmatrix}$.
 
-### The Fundamental Theorem (Part 1)
+**Solution:** $r = 1$. $C(A) = \text{span}\{(1,3,2)^T\}$, a line in $\mathbb{R}^3$. $N(A) = \text{span}\{(-2,1)^T\}$, a line in $\mathbb{R}^2$. $C(A^T) = \text{span}\{(1,2)^T\}$, a line in $\mathbb{R}^2$. $N(A^T) = \text{span}\{(-3,1,0)^T, (-2,0,1)^T\}$, a plane in $\mathbb{R}^3$. Check: $r + (n - r) = 1 + 1 = 2 = n$ and $r + (m - r) = 1 + 2 = 3 = m$.
 
-$$\dim C(A) = r, \quad \dim N(A) = n - r, \quad \dim C(A^T) = r, \quad \dim N(A^T) = m - r$$
-
-Within $\mathbb{R}^n$: $r + (n-r) = n$. Within $\mathbb{R}^m$: $r + (m-r) = m$. Always.
-
-### The Symmetry Revelation
-
-The number of independent rows of $A$ exactly equals the number of independent columns — both equal $r$. Row rank = column rank.
-
-## Cross-Cluster Links
-- **Prereq**: [[05-Transposes-Permutations-Spaces]], [[06-Complete-Solutions-and-Rank]], [[07-Independence-Basis-Dimension]]
-- **Forward**: [[09-Matrix-Spaces-and-Rank1]] (subspaces of matrices), [[10-Graphs-Networks-Incidence]] (incidence matrix instantiates all four)
-- **Geometry add-on**: [[12-Orthogonal-Vectors-Subspaces]] (Part 2 of the Fundamental Theorem)
-
-## Thematic Summary
-Lecture 10 is the architectural blueprint of the entire course. Every matrix decomposes its input space into the row space and nullspace, and its output space into the column space and left nullspace. Once this blueprint is internalised, every later result (orthogonal complements, projections, least squares) is a re-reading of this picture.
-
-## Glossary
-
-| Term | Definition |
-|------|------------|
-| **Fundamental Theorem (Part 1)** | The dimension count for the four subspaces. |
-| **Row Space** | $C(A^T)$; span of rows of $A$. |
-| **Left Nullspace** | $N(A^T)$; vectors $\mathbf{y}$ with $\mathbf{y}^T A = \mathbf{0}^T$. |
-| **Rank** | $r = \dim C(A) = \dim C(A^T)$. The "size" of $A$'s action. |
+**Key insight:** For full-rank $2 \times 2$ matrices like $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$, all four subspaces are trivial or full: $C(A) = \mathbb{R}^2$, $N(A) = \{0\}$, $C(A^T) = \mathbb{R}^2$, $N(A^T) = \{0\}$. In [[10-Graphs-Networks-Incidence|network analysis]], a $3$-edge, $2$-node incidence matrix gives physical meaning to all four: $C(A^T)$ is potential differences along edges, $N(A)$ is equilibrium potentials, $C(A)$ is edge-state vectors, and $N(A^T)$ is current distributions satisfying KCL.

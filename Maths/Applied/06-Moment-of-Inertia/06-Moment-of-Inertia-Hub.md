@@ -1,4 +1,4 @@
----
+﻿---
 date: 2026-07-20
 type: hub
 tags: [maths, applied, moment-of-inertia, a-level]
@@ -26,8 +26,12 @@ tags: [maths, applied, moment-of-inertia, a-level]
 
 ## Proofs
 
-📁 [[Applied/Proofs/06-Moment-of-Inertia/]] — Full derivations for each subtopic
-
+Rigorous derivations for each concept:
+- [[Proofs/06.1-MI-Definition-Theorems-Proof|MI Definition & Theorems]]
+- [[Proofs/06.2-MI-Standard-Bodies-Proof|MI of Standard Bodies]]
+- [[Proofs/06.3-Rotational-KE-Angular-Momentum-Proof|Rotational KE & Angular Momentum]]
+- [[Proofs/06.4-Compound-Pendulum-Proof|Compound Pendulum]]
+- [[Proofs/06.5-Rolling-Motion-Proof|Rolling Motion]]
 ---
 
 ## Quick Navigation
@@ -46,6 +50,14 @@ tags: [maths, applied, moment-of-inertia, a-level]
 │ Moment of Inertia (T6)   │    5     │   5    │ Done   │
 └──────────────────────────┴──────────┴────────┴────────┘
 ```
+
+---
+
+## 🔗 Physics Applications
+
+| Physics Topic | File | Connection |
+|---------------|------|------------|
+| Rotational Dynamics | [[Physics/02-Mechanics/02.7-Rotational-Dynamics|2.7 Rotational Dynamics]] | Torque, angular momentum in physical systems |
 
 ---
 

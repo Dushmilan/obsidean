@@ -1,27 +1,8 @@
----
-date: 2026-07-20
-type: concept
-tags:
-  - dsa
-  - data-structures
-  - hash-tables
----
+A hash table maps keys to values using a hash function, providing average O(1) lookups. It's the most commonly used data structure for fast key-value access — the backbone of dictionaries, caches, and sets.
 
-# Hash Tables
+**The Intuition:** Think of a hash table like a library with numbered shelves. When you want to store a book (key), you run its title through a formula (hash function) that tells you exactly which shelf number to put it on. To find it later, you run the same formula — no searching needed. But if two books hash to the same shelf (collision), you need a backup plan like chaining them together.
 
-## Definition
-A data structure that maps keys to values using a hash function. Provides average $O(1)$ lookups.
-
-## Components
-- **Key** — unique identifier
-- **Hash function** — maps key to bucket index
-- **Hash table** — array of buckets (linked lists or trees)
-
-## Collision Resolution
-- **Chaining** — each bucket stores a linked list of entries
-- **Open addressing** — probe next empty slot (linear, quadratic, double hashing)
-
-## Time Complexity
+**The Math:**
 
 | Operation | Average | Worst Case |
 |-----------|---------|------------|
@@ -31,21 +12,11 @@ A data structure that maps keys to values using a hash function. Provides averag
 
 Worst case occurs when all keys hash to the same bucket.
 
-## Key Patterns
-- [[06-Hash-Tables-Patterns.md#Frequency Counter|Frequency counter]]
-- [[06-Hash-Tables-Patterns.md#Two Sum with Hash Map|Two sum]]
-- [[06-Hash-Tables-Patterns.md#Contains Duplicate|Contains duplicate]]
-- [[06-Hash-Tables-Patterns.md#Intersection of Two Arrays|Intersection of two arrays]]
-- [[06-Hash-Tables-Patterns.md#Subarray Sum Equals K|Subarray sum equals K]]
-- [[06-Hash-Tables-Patterns.md#Hash Set Usage|Hash set usage]]
+**Collision resolution:** Chaining (each bucket stores a linked list) or open addressing (probe next empty slot — linear, quadratic, double hashing).
 
-## Applications
-- Database indexing
-- Caching (dictionaries)
-- Counting / frequency problems
-- De-duplication
-- Symbol tables in compilers
+**Key Patterns:** [[06-Hash-Tables-Patterns#Frequency Counter|Frequency counter]], [[06-Hash-Tables-Patterns#Two Sum with Hash Map|Two sum]], [[06-Hash-Tables-Patterns#Contains Duplicate|Contains duplicate]], [[06-Hash-Tables-Patterns#Intersection of Two Arrays|Intersection of two arrays]], [[06-Hash-Tables-Patterns#Subarray Sum Equals K|Subarray sum equals K]], [[06-Hash-Tables-Patterns#Hash Set Usage|Hash set usage]]
+
+**Applications:** Database indexing, caching (dictionaries), counting / frequency problems, de-duplication, symbol tables in compilers.
 
 ---
-
 **See also:** [[../01-Arrays/Arrays.md|Arrays]], [[../02-Strings/Strings.md|Strings]]

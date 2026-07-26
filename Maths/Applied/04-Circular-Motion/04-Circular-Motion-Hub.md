@@ -1,4 +1,4 @@
----
+﻿---
 date: 2026-07-20
 type: hub
 tags: [maths, applied, circular-motion, a-level]
@@ -26,8 +26,11 @@ tags: [maths, applied, circular-motion, a-level]
 
 ## Proofs
 
-📁 [[Applied/Proofs/04-Circular-Motion/]] — Full derivations for each subtopic
-
+- [[Proofs/04.1-Proofs-Uniform-Circular-Motion|Uniform Circular Motion]]
+- [[Proofs/04.2-Proofs-Conical-Pendulum|Conical Pendulum]]
+- [[Proofs/04.3-Proofs-Horizontal-Vertical-Circles|Horizontal & Vertical Circles]]
+- [[Proofs/04.4-Proofs-Banked-Tracks|Banked Tracks]]
+- [[Proofs/04.5-Proofs-Spherical-Surfaces|Spherical Surfaces]]
 ---
 
 ## Quick Navigation
@@ -46,6 +49,14 @@ tags: [maths, applied, circular-motion, a-level]
 │ Circular Motion (T4)    │    5     │   5    │ Done   │
 └─────────────────────────┴──────────┴────────┴────────┘
 ```
+
+---
+
+## 🔗 Physics Applications
+
+| Physics Topic | File | Connection |
+|---------------|------|------------|
+| Circular Motion | [[Physics/02-Mechanics/02.4-Circular-Motion|2.4 Circular Motion]] | Centripetal force, vertical circles |
 
 ---
 

@@ -2,7 +2,7 @@
 date: 2026-07-19
 type: proof
 tags: [maths, pure, proof, algebra, permutations, combinations]
-topic: [[Pure/01-Algebra/06-Permutations-Combinations.md]]
+parent: [[Pure/01-Algebra/06-Permutations-Combinations]]
 ---
 
 # Permutations & Combinations — Full Derivations

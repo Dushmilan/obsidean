@@ -2,7 +2,7 @@
 date: 2026-07-19
 type: proof
 tags: [maths, pure, proof, algebra, induction]
-topic: [[Pure/01-Algebra/08-Mathematical-Induction.md]]
+parent: [[Pure/01-Algebra/08-Mathematical-Induction]]
 ---
 
 # Mathematical Induction — Full Derivations & Advanced Forms

@@ -19,28 +19,27 @@ children:
 
 ## 📋 Subtopics Overview
 
-| # | Topic | File | Status |
-|---|-------|------|--------|
-| 1.1 | **Physical Quantities & Units** | `[[01.1-Physical-Quantities-Units.md]]` | 🟢 Complete |
-| 1.2 | **Errors & Uncertainties** | `[[01.2-Errors-Uncertainties.md]]` | 🟢 Complete |
-| 1.3 | **Scalars & Vectors** | `[[01.3-Scalars-Vectors.md]]` | 🟢 Complete |
-| 1.4 | **Dimensional Analysis** | `[[01.4-Dimensional-Analysis.md]]` | 🟢 Complete |
+| #   | Topic                           | File                               |
+| --- | ------------------------------- | ---------------------------------- |
+| 1.1 | **Physical Quantities & Units** | [[01.1-Physical-Quantities-Units]] |
+| 1.2 | **Errors & Uncertainties**      | [[01.2-Errors-Uncertainties]]      |
+| 1.3 | **Scalars & Vectors**           | [[01.3-Scalars-Vectors]]           |
+| 1.4 | **Dimensional Analysis**        | [[01.4-Dimensional-Analysis]]      |
 
 ---
 
 ## 🔗 Cross-Unit Connections
 
 ### Prerequisites for:
-- **Unit 2: Mechanics** — Vectors (1.3), Units (1.1), Errors (1.2) used throughout
-- **Unit 3: Thermal Physics** — Dimensional analysis (1.4) for gas laws
-- **Unit 4: Waves & Optics** — Units, vectors for wave equations
-- **Unit 5: Electricity & Magnetism** — Dimensional analysis for constants
-- **Unit 6: Modern Physics** — Units, errors in experimental physics
-- **Unit 7: Electronics** — Units, measurement techniques
+- **Unit 2: Mechanics** — [[02-Mechanics/02-Mechanics-Hub|Vectors (1.3), Units (1.1), Errors (1.2)]]
+- **Unit 3: Thermal Physics** — [[03-Thermal-Physics/03-Thermal-Physics-Hub|Dimensional analysis (1.4)]]
+- **Unit 4: Waves & Optics** — [[04-Waves-Optics/04-Waves-Optics-Hub|Units, vectors]]
+- **Unit 5: Electricity & Magnetism** — [[05-Electricity-Magnetism/05-Electricity-Magnetism-Hub|Dimensional analysis]]
+- **Unit 6: Electronics** — [[07-Electronics/07-Electronics-Hub|Units, measurement]]
 
-### Overlap with Applied Mathematics:
-- Vectors → **Applied Maths Unit 1: Kinematics** (displacement, velocity, acceleration)
-- Dimensional Analysis → **Applied Maths Unit 6: Moment of Inertia** (theorems)
+### Overlap with Maths:
+- [[Maths/Applied/01-Kinematics/01-Kinematics-Hub|Applied Maths: Kinematics]] — displacement, velocity, acceleration
+- [[Maths/Applied/06-Moment-of-Inertia/06-Moment-of-Inertia-Hub|Applied Maths: Moment of Inertia]] — dimensional analysis theorems
 
 ---
 
@@ -86,7 +85,7 @@ children:
 ---
 
 ## 📚 Derivations Folder
-`[[Physics/Derivations/01-Measurement/]]`
+[[Physics/Derivations/01-Measurement/01.1-SI-Base-Units-Proofs|Derivations]]
 
 | Derivation | File |
 |------------|------|
@@ -96,16 +95,3 @@ children:
 | 1.4 Buckingham π Theorem | `01.4-Buckingham-Pi-Proof.md` |
 
 ---
-
-## ✅ Completion Checklist
-
-- [x] 01.1 Physical Quantities & Units — Concept + Derivations
-- [x] 01.2 Errors & Uncertainties — Concept + Derivations
-- [x] 01.3 Scalars & Vectors — Concept + Derivations
-- [x] 01.4 Dimensional Analysis — Concept + Derivations
-- [x] Unit Hub File — This file
-- [x] Cross-references in Physics.md updated to 🟢
-
----
-
-*Status: 🟢 Unit 1 Complete | Next: [[Physics/02-Mechanics/02-Mechanics-Hub.md]]*

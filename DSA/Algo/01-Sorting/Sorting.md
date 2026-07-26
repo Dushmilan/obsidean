@@ -1,18 +1,8 @@
----
-date: 2026-07-20
-type: concept
-tags:
-  - dsa
-  - algorithms
-  - sorting
----
+Sorting is the fundamental algorithmic operation of arranging elements in a specific order — usually ascending or descending. It's a prerequisite for more efficient algorithms like binary search, and most real-world data processing starts here.
 
-# Sorting
+**The Intuition:** Think of sorting like organizing a deck of cards. You pick up one card at a time and place it in the right position relative to the ones you've already arranged. Some methods (like bubble sort) swap adjacent cards repeatedly, while others (like merge sort) split the deck in half, sort each pile separately, then merge them back together.
 
-## Definition
-Rearranging elements into a specific order (typically ascending or descending).
-
-## Comparison Sorts
+**The Math:**
 
 | Algorithm | Best | Average | Worst | Space | Stable |
 |-----------|------|---------|-------|-------|--------|
@@ -23,21 +13,9 @@ Rearranging elements into a specific order (typically ascending or descending).
 | Quick | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$ | $O(\log n)$ | No |
 | Heap | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(1)$ | No |
 
-## Key Patterns
-- [[01-Sorting-Patterns.md#Bubble Sort|Bubble sort]]
-- [[01-Sorting-Patterns.md#Selection Sort|Selection sort]]
-- [[01-Sorting-Patterns.md#Insertion Sort|Insertion sort]]
-- [[01-Sorting-Patterns.md#Merge Sort|Merge sort]]
-- [[01-Sorting-Patterns.md#Quick Sort|Quick sort]]
-- [[01-Sorting-Patterns.md#Heap Sort|Heap sort]]
-- [[01-Sorting-Patterns.md#Built-in Sort|Built-in sort usage]]
+**Key Patterns:** [[01-Sorting-Patterns#Bubble Sort|Bubble sort]], [[01-Sorting-Patterns#Selection Sort|Selection sort]], [[01-Sorting-Patterns#Insertion Sort|Insertion sort]], [[01-Sorting-Patterns#Merge Sort|Merge sort]], [[01-Sorting-Patterns#Quick Sort|Quick sort]], [[01-Sorting-Patterns#Heap Sort|Heap sort]], [[01-Sorting-Patterns#Built-in Sort|Built-in sort usage]]
 
-## Applications
-- Data processing and reporting
-- Binary search prerequisite
-- Database ORDER BY operations
-- Finding duplicates efficiently
+**Applications:** Data processing and reporting, binary search prerequisite, database ORDER BY operations, finding duplicates efficiently.
 
 ---
-
 **See also:** [[../02-Searching/Searching.md|Searching]], [[../06-Divide-Conquer/Divide-Conquer.md|Divide & Conquer]]

@@ -2,7 +2,7 @@
 date: 2026-07-19
 type: proof
 tags: [maths, pure, proof, algebra, binomial-theorem]
-topic: [[Pure/01-Algebra/07-Binomial-Theorem.md]]
+parent: [[Pure/01-Algebra/07-Binomial-Theorem]]
 ---
 
 # Binomial Theorem — Full Derivations

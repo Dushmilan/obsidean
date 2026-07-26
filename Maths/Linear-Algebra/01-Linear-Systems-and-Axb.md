@@ -1,56 +1,29 @@
+# Linear Systems and the Meaning of $A\mathbf{x} = \mathbf{b}$
+
+Every linear system in science and engineering reduces to the equation $A\mathbf{x} = \mathbf{b}$, and the key to the whole course is choosing the right way to look at it. The row picture treats each equation as a hyperplane and finds their intersection. But there's a deeper way — the column picture — that asks: can we assemble $\mathbf{b}$ from the columns of $A$ using the right weights? This reframing is the foundation of everything that follows, from [[02-Elimination-and-RREF|elimination]] to [[07-Independence-Basis-Dimension|basis]] to [[13-Projections-Least-Squares|projections]].
+
+**The Intuition:** Think of $A$'s columns as ingredients. The equation asks: what recipe (weights $\mathbf{x}$) combines the ingredients into the dish $\mathbf{b}$? In 2D, two lines crossing at a point (row picture) vs. two arrows scaling and adding to reach a target (column picture) — same answer, different geometry. The column picture makes it explicit that $\mathbf{b}$ must be reachable from the columns of $A$, which is the most direct way to understand solvability.
+
+**The Math:** $A$ is an $m \times n$ matrix, $\mathbf{x} \in \mathbb{R}^n$ is the column vector of unknowns, and $\mathbf{b} \in \mathbb{R}^m$ is the constants vector. The column picture expands to $x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + \cdots + x_n \mathbf{a}_n = \mathbf{b}$ — you're finding weights that build $\mathbf{b}$ from columns. When $A$ is square ($m = n$), the question "is $\mathbf{b}$ in the column space?" becomes "is $A$ invertible?" When $m \neq n$, the column space is a proper subspace of $\mathbb{R}^m$ and most $\mathbf{b}$ are unreachable. The row picture tells you about each equation individually; the column picture tells you about the whole system at once. Treating $A$ as an operator (mapping $\mathbf{x}$ to $\mathbf{b}$) is what makes it possible to talk about inverses, eigenvalues, and transformations later — it's the bridge from algebra to geometry.
+
+**What does this mean for solving systems?** Start with the column picture when analyzing solvability (it's the fastest way to see if a solution exists), but use the row picture when performing elimination (it's the algorithmic workhorse). When $A$ is square, check invertibility. When rectangular, check the rank.
+
+**Setup:** Solve $2x + y = 5$ and $x + 3y = 7$.
+
+**Solution:** Row picture: find where two lines intersect. Column picture: find weights on $(2, 1)^T$ and $(1, 3)^T$ that give $(5, 7)^T$. The answer is $x = 1.6$, $y = 1.8$.
+
+**Key insight:** Both pictures give the same answer, but the column picture shows you the vectors being combined.
+
+**Setup:** Solve $x + y = 3$ and $x + y = 5$.
+
+**Solution:** Row picture: parallel lines never meet. Column picture: $(1, 1)^T$ only spans a line in $\mathbb{R}^2$, and $(3, 5)^T$ is off that line. No solution exists — $\mathbf{b} \notin C(A)$.
+
+**Key insight:** The column picture immediately tells you the system is inconsistent. You can see $\mathbf{b}$ is not reachable.
+
+**Setup:** Solve $x + 2y + 3z = 6$ and $2x + 4y + 6z = 12$.
+
+**Solution:** The second equation is twice the first. One equation, three unknowns, two free variables. Column picture: $(1, 2)^T$, $(2, 4)^T$, and $(3, 6)^T$ are all multiples — they span only a line. Infinitely many solutions along a line in $\mathbb{R}^3$.
+
+**Key insight:** The column picture reveals the dependency directly — all columns are multiples of one.
+
 ---
-date: 2026-07-21
-type: linear-algebra-cluster
-tags: [linear-algebra, strang]
-lectures: [1]
-prereq_clusters: []
-status: complete
-source: manual
----
-
-# 01 — Linear Systems and the Meaning of $A\mathbf{x} = \mathbf{b}$
-
-## Concept Statement
-Master the three lenses through which a single matrix equation is viewed: row-by-row, column-by-column, and as a box multiplying a vector. Stratify which lens reveals which fact.
-
-## Lecture Sources
-- Strang MIT 18.06, Lecture 1: *The Geometry of Linear Equations*
-
-## Core Material
-
-### The Equation Itself
-$$A\mathbf{x} = \mathbf{b}$$
-- $A$ — coefficient matrix, dimensions $m \times n$
-- $\mathbf{x} \in \mathbb{R}^n$ — column vector of unknowns
-- $\mathbf{b} \in \mathbb{R}^m$ — column vector of constants
-
-### Three Lenses
-
-**Row Picture** — solve equation-by-equation. Each row of $A$ defines a hyperplane in $\mathbb{R}^n$. The solution lies at the simultaneous intersection of all hyperplanes.
-- 2D: two **lines** intersect at a point.
-- 3D: three **planes** intersect at a point.
-
-**Column Picture** (Strang's preferred) — view $A\mathbf{x}$ as a *combination* of $A$'s columns:
-$$x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + \cdots + x_n \mathbf{a}_n = \mathbf{b}$$
-The question becomes: *which weights $x_1, \dots, x_n$ assemble the columns into $\mathbf{b}$?*
-
-**Matrix Picture** — $A$ is a single operator acting on $\mathbf{x}$. The same equation, abstracted from row/column detail.
-
-### Why the Column Picture Wins
-The column picture exposes that $\mathbf{b}$ must lie in the *span of the columns of $A$*. The row picture hides this insight until equations are solved.
-
-## Cross-Cluster Links
-- **Next**: [[02-Elimination-and-RREF]] (solving by row operations)
-- **Forward**: [[05-Transposes-Permutations-Spaces]] (column space $C(A)$ formalised)
-- **Operator lens**: [[03-Matrix-Multiplication-and-Inverses]] (multiplication as an operation)
-
-## Thematic Summary
-Strang's first move is philosophical: refuse the row picture's century-old dominance and reframe every equation as a *combination problem*. This reframing is the bedrock of the course — once $A\mathbf{x} = \mathbf{b}$ is recognised as "find weights that build $\mathbf{b}$ from columns," every later concept (column space, rank, basis, projection) acquires geometric meaning.
-
-## Glossary
-
-| Term | Definition |
-|------|------------|
-| **Linear Combination** | A sum $x_1 \mathbf{v}_1 + \cdots + x_k \mathbf{v}_k$ of vectors weighted by scalars. The column picture lives here. |
-| **Coefficient Matrix ($A$)** | The $m \times n$ grid of numerical weights that links unknowns $\mathbf{x}$ to constants $\mathbf{b}$. |
-| **Singular Matrix** | A square $A$ with linearly dependent columns; no $A^{-1}$ exists; column picture collapses onto a lower-dim set. |

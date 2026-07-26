@@ -1,57 +1,15 @@
----
-date: 2026-07-21
-type: linear-algebra-cluster
-tags: [linear-algebra, strang]
-lectures: [14]
-prereq_clusters: ["08"]
-status: complete
-source: manual
----
+# Orthogonal Vectors and Subspaces
 
-# 12 — Orthogonal Vectors and Subspaces
+Part 2 of the Fundamental Theorem reveals the geometric punchline of [[08-Four-Fundamental-Subspaces|the four subspaces]]: they are not just dimension-complementary — they are perpendicular. The nullspace is locked at 90 degrees to the row space. Once orthogonality is established, every subsequent algorithm — Gram-Schmidt, least squares, QR — becomes geometric rather than algebraic. This is the engine that drives [[13-Projections-Least-Squares|projections]].
 
-## Concept Statement
-Install right-angle geometry into vector spaces via the dot product. Reveal the second half of the Fundamental Theorem: the four subspaces pair up into two **orthogonal complements**.
+**The Intuition:** Orthogonal vectors are like coordinate axes — they point in completely independent directions. Knowing one tells you nothing about the other in that direction. In $\mathbb{R}^3$, the $x$-$y$ plane is perpendicular to the $z$-axis. Every vector in the plane is perpendicular to the $z$-axis. They are orthogonal complements. The Pythagorean theorem confirms perpendicularity: if $\mathbf{x} \perp \mathbf{y}$, then $\|\mathbf{x}\|^2 + \|\mathbf{y}\|^2 = \|\mathbf{x} + \mathbf{y}\|^2$.
 
-## Lecture Sources
-- Strang MIT 18.06, Lecture 14: *Orthogonal Vectors and Subspaces*
+**The Math:** Two vectors are orthogonal if $\mathbf{x}^T \mathbf{y} = 0$. Two subspaces $V$ and $W$ are orthogonal complements if every vector in $V$ is perpendicular to every vector in $W$. For a subspace $V$ of $\mathbb{R}^n$, $V^\perp$ has dimension $n - \dim(V)$, and together they span all of $\mathbb{R}^n$: every vector can be uniquely written as $\mathbf{v} + \mathbf{w}$ with $\mathbf{v} \in V$ and $\mathbf{w} \in V^\perp$. The Fundamental Theorem Part 2 states: $C(A^T) \perp N(A)$ in $\mathbb{R}^n$, and $C(A) \perp N(A^T)$ in $\mathbb{R}^m$.
 
-## Core Material
+Orthogonal is not the same as linearly independent — $(1,0)$ and $(1,1)$ are independent but not perpendicular. But perpendicular vectors are always independent. The orthogonal complement is unique: for a given $V$, there is exactly one $V^\perp$. And be aware: orthogonality depends on the inner product — a different inner product gives a different notion of perpendicularity.
 
-### Orthogonality of Vectors
-$\mathbf{x} \perp \mathbf{y}$ iff $\mathbf{x}^T \mathbf{y} = 0$.
+**Setup:** $\mathbf{x} = (1, 2, 3)^T$, $\mathbf{y} = (4, -2, 0)^T$.
 
-**Pythagorean proof** — if they're perpendicular:
-$$\Vert \mathbf{x} \Vert^2 + \Vert \mathbf{y} \Vert^2 = \Vert \mathbf{x} + \mathbf{y} \Vert^2$$
-Expanding RHS: $\mathbf{x}^T\mathbf{x} + \mathbf{y}^T\mathbf{y} + \mathbf{x}^T\mathbf{y} + \mathbf{y}^T\mathbf{x}$. Equating forces $\mathbf{x}^T\mathbf{y} = 0$.
+**Solution:** $\mathbf{x}^T \mathbf{y} = 1(4) + 2(-2) + 3(0) = 4 - 4 + 0 = 0$. They are orthogonal.
 
-**Vector length**: $\Vert \mathbf{x} \Vert^2 = \mathbf{x}^T \mathbf{x}$.
-
-### Orthogonal Subspaces
-Subspace $V \perp W$ iff every $\mathbf{v} \in V$ is orthogonal to every $\mathbf{w} \in W$.
-
-### The Fundamental Theorem (Part 2)
-
-| Pair | Where | Dimensions |
-|------|-------|------------|
-| $C(A^T) \perp N(A)$ in $\mathbb{R}^n$ | $r + (n-r) = n$ | full orthogonal split |
-| $C(A) \perp N(A^T)$ in $\mathbb{R}^m$ | $r + (m-r) = m$ | full orthogonal split |
-
-If $\mathbf{x} \in N(A)$, it is perpendicular to **every row** of $A$. Hence $N(A)$ is the orthogonal complement of $C(A^T)$.
-
-## Cross-Cluster Links
-- **Prereq**: [[08-Four-Fundamental-Subspaces]]
-- **Forward**: [[13-Projections-Least-Squares]] (orthogonality becomes the engine of approximation)
-- **Visual**: [[10-Graphs-Networks-Incidence]] (now also physical: $\mathbf{e}$ in [[13-Projections-Least-Squares|Projections]] is perpendicular to $C(A)$)
-
-## Thematic Summary
-Part 2 of the Fundamental Theorem reveals the geometric punchline of Lecture 10: the four subspaces aren't just dimension-complementary — they're *perpendicular*. The nullspace is locked at $90°$ to the row space. Once orthogonality is established, every subsequent algorithm (Gram-Schmidt, least squares, QR) becomes geometric rather than algebraic.
-
-## Glossary
-
-| Term | Definition |
-|------|------------|
-| **Orthogonal** | Two vectors are perpendicular; their dot product is zero. |
-| **Inner Product ($\mathbf{x}^T\mathbf{y}$)** | Sum of componentwise products. The angle measure for vectors. |
-| **Orthogonal Complement** | For subspace $V$ in a larger space, all vectors $\perp$ to every vector in $V$. |
-| **Fundamental Theorem (Part 2)** | $N(A) \perp C(A^T)$ in $\mathbb{R}^n$; $N(A^T) \perp C(A)$ in $\mathbb{R}^m$. |
+**Key insight:** For $V = \text{span}\{(1,1,1)^T\}$ in $\mathbb{R}^3$, $V^\perp = \{\mathbf{x} : x_1 + x_2 + x_3 = 0\}$, a plane through the origin. The orthogonal complement of a line is a plane; the orthogonal complement of a plane is a line. Verify with the Pythagorean theorem: $\mathbf{x} = (3,0)^T$, $\mathbf{y} = (0,4)^T$ give $\|\mathbf{x}\|^2 + \|\mathbf{y}\|^2 = 9 + 16 = 25 = \|\mathbf{x} + \mathbf{y}\|^2$. This confirms perpendicularity and is the foundation for projections — the error is always orthogonal to the column space.

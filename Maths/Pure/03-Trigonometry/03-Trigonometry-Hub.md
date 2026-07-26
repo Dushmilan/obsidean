@@ -1,4 +1,4 @@
----
+﻿---
 date: 2026-07-19
 type: hub
 tags: [maths, pure, a-level, trigonometry]
@@ -29,7 +29,7 @@ tags: [maths, pure, a-level, trigonometry]
 
 ## Proofs
 
-📁 [[Pure/Proofs/03-Trigonometry/]] — Full derivations for each subtopic
+📁 Full derivations for each subtopic (proofs pending)
 
 ---
 
@@ -49,6 +49,18 @@ tags: [maths, pure, a-level, trigonometry]
 │ Trigonometry (T3)   │    8     │   8    │ Done   │
 └─────────────────────┴──────────┴────────┴────────┘
 ```
+
+---
+
+## 🔗 Physics Applications
+
+| Physics Topic | File | Connection |
+|---------------|------|------------|
+| Wave Motion | [[Physics/04-Waves-Optics/04.1-Wave-Motion|4.1 Wave Motion]] | y = Asin(kx - ωt) wave equations |
+| Sound | [[Physics/04-Waves-Optics/04.2-Sound|4.2 Sound]] | Doppler effect, beats |
+| Wave Optics | [[Physics/04-Waves-Optics/04.4-Wave-Optics|4.4 Wave Optics]] | Interference, diffraction patterns |
+| AC Circuits | [[Physics/05-Electricity-Magnetism/05.6-AC-Circuits|5.6 AC Circuits]] | Phasor diagrams, impedance |
+| Kinematics | [[Physics/02-Mechanics/02.1-Kinematics|2.1 Kinematics]] | Projectile angle decomposition |
 
 ---
 

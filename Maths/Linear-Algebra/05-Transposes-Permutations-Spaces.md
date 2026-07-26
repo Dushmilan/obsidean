@@ -1,76 +1,21 @@
----
-date: 2026-07-21
-type: linear-algebra-cluster
-tags: [linear-algebra, strang]
-lectures: [5, 6]
-prereq_clusters: ["02", "03"]
-status: complete
-source: manual
----
+# Transposes, Permutations, and Vector Spaces
 
-# 05 — Transposes, Permutations, and Vector Spaces $\mathbb{R}^n$
+We can solve systems and factor matrices — but what are we actually solving *in*? This lecture introduces the two most important subspaces of any matrix: the column space $C(A)$ (what can $A$ reach?) and the nullspace $N(A)$ (what gets crushed to zero?). Every solvability question reduces to "is $\mathbf{b}$ in $C(A)$?" and every multiplicity-of-solutions question reduces to "what is $N(A)$?" The transpose and permutation matrices are the component-level tools that connect rows to columns, and they set up the [[08-Four-Fundamental-Subspaces|four fundamental subspaces]].
 
-## Concept Statement
-Bundle the matrix-component manipulations (transposes, permutations, symmetry) with the first formal definition of *vector space* and the two most important subspaces of any matrix: $C(A)$ and $N(A)$.
+**The Intuition:** Think of $A$ as a machine that takes $n$-dimensional inputs and produces $m$-dimensional outputs. $C(A)$ is all possible outputs — the "output range." $N(A)$ is all inputs that produce zero — the "input waste." If you think of $A$ as a transformation, the column space tells you what it can do, and the nullspace tells you what it cannot distinguish. The transpose is not just a notation trick — it's the bridge to the row space and left nullspace. Permutation matrices are the simplest orthogonal matrices, and they're the building blocks of all row-exchange algorithms. Every subspace must pass through the origin, be closed under addition, and be closed under scalar multiplication. In $\mathbb{R}^3$, the only subspaces are the origin, lines through the origin, planes through the origin, and all of $\mathbb{R}^3$.
 
-## Lecture Sources
-- Strang MIT 18.06, Lecture 5: *Transposes, Permutations, Spaces $\mathbb{R}^n$*
-- Strang MIT 18.06, Lecture 6: *Column Space and Nullspace*
+**The Math:** $A$ is $m \times n$. The transpose $A^T$ swaps rows and columns, and reverses order in products: $(AB)^T = B^T A^T$. For any matrix $R$, the product $R^T R$ is always symmetric — this is the foundation of [[13-Projections-Least-Squares|least squares]]. The column space $C(A)$ is the span of $A$'s columns, a subspace of $\mathbb{R}^m$. The nullspace $N(A)$ is all $\mathbf{x}$ with $A\mathbf{x} = \mathbf{0}$, a subspace of $\mathbb{R}^n$. They live in different spaces and cannot be compared directly. Permutation matrices $P$ satisfy $P^T = P^{-1}$ and record row swaps. To check if $\mathbf{b}$ is in $C(A)$, augment $[A \mid \mathbf{b}]$ and row-reduce — if you get a zero row with a non-zero on the right, $\mathbf{b}$ is not in $C(A)$. To find $N(A)$, row-reduce $A$ to RREF and read off the special solutions.
 
-## Core Material
+**Worked Examples:**
 
-### Permutation Matrices (recap)
-- $P$ is the identity matrix with rows reordered.
-- $P^T = P^{-1}$ — orthogonal by construction.
-- $n!$ permutations of size $n$.
+**Example 1: Column space of a 2x3 matrix.** $A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}$. $C(A)$ is the span of columns $(1,4)^T$, $(2,5)^T$, $(3,6)^T$ in $\mathbb{R}^2$. The first two are independent, so $C(A) = \mathbb{R}^2$ — the entire plane.
 
-### Transpose $A^T$
-- $A_{ij}^T = A_{ji}$.
-- **Product rule**: $(AB)^T = B^T A^T$ (order reverses, as with inverses).
+**Key insight:** When $m < n$, $C(A)$ can be all of $\mathbb{R}^m$ if the rank is $m$.
 
-### Symmetric Matrices
-- $A = A^T$.
-- **Striking fact**: For *any* matrix $R$ (square or not), $R^T R$ is symmetric.
-- $\mathbb{R}^n$ sub-tells: the row space $C(A^T)$ is a subspace of $\mathbb{R}^n$.
+**Example 2: Nullspace via RREF.** $A = \begin{bmatrix} 1 & 2 & 2 \\ 2 & 4 & 6 \end{bmatrix}$. RREF gives $R = \begin{bmatrix} 1 & 2 & 0 \\ 0 & 0 & 1 \end{bmatrix}$. One free variable (column 2). Special solution: $\mathbf{x}_s = (-2, 1, 0)^T$. So $N(A) = \text{span}\{(-2, 1, 0)^T\}$, a line in $\mathbb{R}^3$.
 
-### Vector Spaces and Subspaces
-- $\mathbb{R}^n$ — the space of all $n$-component column vectors with real entries.
-- A **subspace** must:
-  1. Contain $\mathbf{0}$.
-  2. Be closed under addition.
-  3. Be closed under scalar multiplication.
+**Key insight:** The nullspace is the set of all combinations of special solutions — one per free variable.
 
-**Crucial**: every subspace passes through the origin. A line/plane that doesn't pass through origin is *not* a subspace.
+**Example 3: Transpose and symmetry.** $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$. $A^T = \begin{bmatrix} 1 & 3 \\ 2 & 4 \end{bmatrix}$. $A^T A = \begin{bmatrix} 10 & 14 \\ 14 & 20 \end{bmatrix}$, which is symmetric. $R^T R$ is always symmetric, regardless of $R$.
 
-### Subspaces in $\mathbb{R}^3$
-Only four possibilities: the origin, a line through origin, a plane through origin, all of $\mathbb{R}^3$.
-
-### Column Space $C(A)$
-- All linear combinations of $A$'s columns.
-- Lives in $\mathbb{R}^m$ (when $A$ is $m \times n$).
-- **Theorem**: $A\mathbf{x} = \mathbf{b}$ has a solution iff $\mathbf{b} \in C(A)$.
-
-### Nullspace $N(A)$
-- All $\mathbf{x}$ such that $A\mathbf{x} = \mathbf{0}$.
-- Lives in $\mathbb{R}^n$.
-- It's a subspace: if $A\mathbf{x} = \mathbf{0}$ and $A\mathbf{y} = \mathbf{0}$, then $A(\mathbf{x}+\mathbf{y}) = \mathbf{0}$. Closed.
-
-## Cross-Cluster Links
-- **Prereq**: [[02-Elimination-and-RREF]], [[03-Matrix-Multiplication-and-Inverses]]
-- **Next**: [[07-Independence-Basis-Dimension]] (formalises size of $C(A)$, $N(A)$)
-- **Forward**: [[08-Four-Fundamental-Subspaces]] (the master theorem)
-- **Conceptual**: [[10-Graphs-Networks-Incidence]] (C(A) and N(A) get physical)
-
-## Thematic Summary
-Lecture 5 cleans up loose ends (transposes, permutations, symmetry) and introduces vector space, the most abstract object of the course. Lecture 6 hangs two subspaces on every matrix — the *column space* (output range) and the *nullspace* (inputs crushed to zero). These two spaces will dominate the rest of the course: every system solvability question reduces to "is $\mathbf{b}$ in $C(A)$?", every multiplicity-of-solutions question reduces to "what is $N(A)$?".
-
-## Glossary
-
-| Term | Definition |
-|------|------------|
-| **Transpose ($A^T$)** | Swap rows and columns; $(AB)^T = B^T A^T$. |
-| **Symmetric Matrix** | $A = A^T$. Note $R^T R$ is always symmetric. |
-| **Vector Space** | A collection closed under addition and scalar multiplication. |
-| **Subspace** | A vector space contained within a larger vector space. Must pass through origin. |
-| **Column Space $C(A)$** | Linear span of $A$'s columns. Subspace of $\mathbb{R}^m$. |
-| **Nullspace $N(A)$** | All $\mathbf{x}$ with $A\mathbf{x} = \mathbf{0}$. Subspace of $\mathbb{R}^n$. |
+**Key insight:** $C(A)$ and $N(A)$ live in different spaces ($\mathbb{R}^m$ vs $\mathbb{R}^n$) — don't confuse $C(A)$ with $C(A^T)$.

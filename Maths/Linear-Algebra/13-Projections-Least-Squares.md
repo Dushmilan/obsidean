@@ -1,64 +1,15 @@
----
-date: 2026-07-21
-type: linear-algebra-cluster
-tags: [linear-algebra, strang]
-lectures: [15]
-prereq_clusters: ["08", "12"]
-status: complete
-source: manual
----
+# Projections and Least Squares
 
-# 13 — Projections and Least Squares
+When $A\mathbf{x} = \mathbf{b}$ has no exact solution — which happens whenever $\mathbf{b}$ is not in $C(A)$ — replace it with the closest approximation: the projection of $\mathbf{b}$ onto $C(A)$. The orthogonality criterion (error perpendicular to column space) yields the normal equations $A^T A \hat{\mathbf{x}} = A^T \mathbf{b}$, the universal tool of data fitting. This is the payoff of [[12-Orthogonal-Vectors-Subspaces|orthogonality]] and builds on [[08-Four-Fundamental-Subspaces|the four fundamental subspaces]].
 
-## Concept Statement
-When $A\mathbf{x} = \mathbf{b}$ has no exact solution (data fits don't), replace it with the *closest* projection. The result is the normal equations — the most important formula in data fitting.
+**The Intuition:** Think of $\mathbf{b}$ as a point in the air and $C(A)$ as the floor. The projection $\mathbf{p}$ is the shadow of $\mathbf{b}$ on the floor — the closest point on the floor to $\mathbf{b}$. The error $\mathbf{e}$ is the vertical line from $\mathbf{b}$ to the floor. Drop a perpendicular from $\mathbf{b}$ to $C(A)$; the foot of the perpendicular is $\mathbf{p}$. The shortest distance from a point to a subspace is along the perpendicular — any other direction would be longer.
 
-## Lecture Sources
-- Strang MIT 18.06, Lecture 15: *Projections onto Subspaces*
+**The Math:** $\mathbf{p} = A\hat{\mathbf{x}}$ is the projection, $\mathbf{e} = \mathbf{b} - \mathbf{p}$ is the error (perpendicular to $C(A)$). The key: $A^T \mathbf{e} = \mathbf{0}$ gives $A^T(\mathbf{b} - A\hat{\mathbf{x}}) = \mathbf{0}$, which rearranges to the normal equations $A^T A \hat{\mathbf{x}} = A^T \mathbf{b}$. The projection matrix is $P = A(A^T A)^{-1} A^T$, which is symmetric ($P^T = P$) and idempotent ($P^2 = P$): projecting twice gives the same result as projecting once.
 
-## Core Material
+The 1D case is the foundation: for a single column $\mathbf{a}$, $\hat{x} = \frac{\mathbf{a}^T \mathbf{b}}{\mathbf{a}^T \mathbf{a}}$ and $P = \frac{\mathbf{a}\mathbf{a}^T}{\mathbf{a}^T \mathbf{a}}$. This generalizes to multiple columns. The normal equations are solvable if and only if $A^T A$ is invertible, which holds if and only if $A$ has full column rank. If $A$ doesn't have full column rank, $A^T A$ is singular and there are infinitely many solutions. Don't assume $P$ is invertible — $P^2 = P$ means it's idempotent, not invertible unless $P = I$.
 
-### The Setting
-Bigger system than unknowns ($m \gg n$): more equations than unknowns. With noise, $\mathbf{b} \notin C(A)$. Exact solution impossible. Approximate one is forced.
+**Setup:** $\mathbf{a} = (1, 2)^T$, $\mathbf{b} = (4, 3)^T$. Project $\mathbf{b}$ onto the line through $\mathbf{a}$.
 
-### Project onto a 1D Line (Spanned by $\mathbf{a}$)
+**Solution:** $\hat{x} = \frac{\mathbf{a}^T \mathbf{b}}{\mathbf{a}^T \mathbf{a}} = \frac{1(4) + 2(3)}{1^2 + 2^2} = \frac{10}{5} = 2$. $\mathbf{p} = 2\mathbf{a} = (2, 4)^T$. Error: $\mathbf{e} = (4,3)^T - (2,4)^T = (2, -1)^T$. Check: $\mathbf{a}^T \mathbf{e} = 1(2) + 2(-1) = 0$.
 
-$\mathbf{p} = \hat{x}\mathbf{a}$ where $\mathbf{a} \perp (\mathbf{b} - \hat{x}\mathbf{a})$:
-$$\mathbf{a}^T (\mathbf{b} - \hat{x}\mathbf{a}) = 0 \;\Longrightarrow\; \hat{x} = \frac{\mathbf{a}^T \mathbf{b}}{\mathbf{a}^T \mathbf{a}}$$
-
-The 1D projection matrix:
-$$P = \frac{\mathbf{a} \mathbf{a}^T}{\mathbf{a}^T \mathbf{a}}$$
-
-### Project onto $C(A)$ (the General Case)
-
-Let $\hat{\mathbf{x}}$ be the best coefficients. The error $\mathbf{e} = \mathbf{b} - A\hat{\mathbf{x}}$ must be orthogonal to $C(A)$:
-$$A^T (\mathbf{b} - A\hat{\mathbf{x}}) = \mathbf{0}$$
-
-### The Normal Equations
-$$\boxed{A^T A \hat{\mathbf{x}} = A^T \mathbf{b}}$$
-The crown jewel formula of least squares. Solvable iff $A^T A$ is invertible (which holds iff $A$ has full column rank).
-
-### The General Projection Matrix $P$
-$$\hat{\mathbf{x}} = (A^T A)^{-1} A^T \mathbf{b}, \quad \mathbf{p} = A\hat{\mathbf{x}} \;\Longrightarrow\; \boxed{P = A (A^T A)^{-1} A^T}$$
-
-### Properties of $P$
-- $P^T = P$ (symmetric)
-- $P^2 = P$ (idempotent — projecting twice does nothing new)
-
-## Cross-Cluster Links
-- **Prereq**: [[08-Four-Fundamental-Subspaces]], [[12-Orthogonal-Vectors-Subspaces]]
-- **Forward**: future lectures on Gram-Schmidt, QR, applications
-
-## Thematic Summary
-Projections show how linear algebra handles *imperfection*. When equations can't be solved exactly, find the projection — the closest vector in the column space to $\mathbf{b}$. The orthogonality criterion (error $\perp$ column space) yields the **normal equations**, the universal tool of data fitting. Every linear regression, system identification, and calibration problem in science reduces to this formula.
-
-## Glossary
-
-| Term | Definition |
-|------|------------|
-| **Projection ($\mathbf{p}$)** | Closest point in a subspace to a target vector; achieved by orthogonal drop. |
-| **Error Vector ($\mathbf{e}$)** | $\mathbf{b} - \mathbf{p}$. Always orthogonal to the projection subspace. |
-| **Normal Equations** | $A^T A \hat{\mathbf{x}} = A^T \mathbf{b}$. The least-squares master formula. |
-| **Least Squares** | The fitting strategy of minimising $\Vert A\mathbf{x} - \mathbf{b} \Vert^2$. |
-| **Idempotent** | $P^2 = P$. Projecting twice is the same as projecting once. |
-| **Projection Matrix $P$** | $P = A(A^T A)^{-1}A^T$. Maps any $\mathbf{b}$ to its projection onto $C(A)$. |
+**Key insight:** The error is perpendicular to $\mathbf{a}$ — this confirms the projection. For least squares fitting with $A = \begin{bmatrix} 1 & 1 \\ 1 & 2 \\ 1 & 3 \end{bmatrix}$ and $\mathbf{b} = (1, 2, 2)^T$: $A^T A = \begin{bmatrix} 3 & 6 \\ 6 & 14 \end{bmatrix}$, $A^T \mathbf{b} = (5, 11)^T$. Solving gives $\hat{\mathbf{x}} = (2/3, 1/2)^T$ — the best fit line is $y = 2/3 + (1/2)t$. When $C(A) = \mathbb{R}^m$ (like $A = I$), the projection is the identity: every $\mathbf{b}$ is already in the column space. Every linear regression, system identification, and calibration problem in science reduces to these formulas.

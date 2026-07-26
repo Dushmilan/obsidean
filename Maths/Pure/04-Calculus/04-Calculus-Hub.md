@@ -1,4 +1,4 @@
----
+﻿---
 date: 2026-07-20
 type: hub
 tags: [maths, pure, a-level, calculus]
@@ -32,7 +32,7 @@ tags: [maths, pure, a-level, calculus]
 
 ## Proofs
 
-📁 [[Pure/Proofs/04-Calculus/]] — Full derivations for each subtopic
+📁 [[Maths/Pure/Proofs/04-Calculus/04.1-Limits-Continuity-Proofs|Proofs]] — Full derivations for each subtopic
 
 ---
 
@@ -52,6 +52,20 @@ tags: [maths, pure, a-level, calculus]
 │ Calculus (T4)       │   11     │   11   │ Done   │
 └─────────────────────┴──────────┴────────┴────────┘
 ```
+
+---
+
+## 🔗 Physics Applications
+
+| Physics Topic | File | Connection |
+|---------------|------|------------|
+| Kinematics | [[Physics/02-Mechanics/02.1-Kinematics|2.1 Kinematics]] | v = ds/dt, a = dv/dt (differentiation) |
+| Work-Energy | [[Physics/02-Mechanics/02.3-Work-Energy-Power|2.3 Work-Energy-Power]] | W = ∫F·ds (integration) |
+| Gravitation | [[Physics/02-Mechanics/02.5-Gravitation|2.5 Gravitation]] | Gravitational PE from integration |
+| SHM | [[Physics/02-Mechanics/02.6-SHM|2.6 SHM]] | d²x/dt² = -ω²x (differential equations) |
+| First Law | [[Physics/03-Thermal-Physics/03.3-First-Law|3.3 First Law]] | Thermodynamic processes |
+| Electric Fields | [[Physics/05-Electricity-Magnetism/05.1-Electric-Fields|5.1 Electric Fields]] | V = -∫E·dr (integration) |
+| EM Induction | [[Physics/05-Electricity-Magnetism/05.5-Electromagnetic-Induction|5.5 EM Induction]] | EMF = -dΦ/dt (differentiation) |
 
 ---
 

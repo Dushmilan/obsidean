@@ -2,7 +2,7 @@
 date: 2026-07-19
 type: proof
 tags: [maths, pure, proof, algebra, partial-fractions]
-topic: [[Pure/01-Algebra/05-Partial-Fractions.md]]
+parent: [[Pure/01-Algebra/05-Partial-Fractions]]
 ---
 
 # Partial Fractions — Full Derivations

@@ -1,84 +1,29 @@
+# Elimination and RREF
+
+We know what $A\mathbf{x} = \mathbf{b}$ means — but how do you actually solve it? Gaussian elimination is the fundamental algorithm: reduce any matrix to upper triangular form $U$ by forward elimination, then to reduced row echelon form $R$ by back-substitution. The structure it reveals — pivots, free variables, special solutions — determines everything about the solution set. This is the engine behind [[04-LU-Factorization|LU factorization]] and the entry point to understanding [[06-Complete-Solutions-and-Rank|complete solutions]].
+
+**The Intuition:** Think of elimination like sorting. You rearrange the equations so that each one introduces exactly one new unknown, working from top to bottom. It's like a staircase — each pivot steps down and to the right. Once you reach the bottom, the system is triangular and trivially solvable by back-substitution. Subtracting a multiple of one row from another does not change the solution set — this is the elementary row operation, and it's the engine of all elimination.
+
+**The Math:** $A$ is $m \times n$. Elimination applies row operations (encoded as elementary matrices $E_{ij}$ and permutation matrices $P$) to produce $E \cdots E_2 E_1 A = U$, then continue to $R = \text{rref}(A)$. The number of pivots $r$ is the rank. The number of free variables is $n - r$, and each generates a special solution. The multipliers $l_{ij}$ — the factors you multiplied pivot rows by and subtracted from lower rows — become the entries of $L$ in the factorization $A = LU$. RREF is unique for any matrix, but different elimination sequences can produce different $U$'s; the rank and nullspace are the same regardless. If a zero appears in a pivot position and no row exchange can fix it, the matrix is singular — columns are linearly dependent. The failure is not a bug; it's a diagnosis.
+
+**What does this mean for solving systems?** Eliminate forward to $U$, then read off pivots and free variables. If RREF is $I$, the nullspace is trivial. The nullspace matrix $N$ has columns that are the special solutions — one per free variable, set that free variable to 1 and the rest to 0.
+
+**Setup:** $A = \begin{bmatrix} 1 & 2 & 1 \\ 2 & 6 & 1 \\ 1 & 2 & 4 \end{bmatrix}$, solve $A\mathbf{x} = \mathbf{0}$.
+
+**Solution:** Forward elimination produces 3 pivots. RREF is $I$. No free variables.
+
+**Key insight:** Full rank means the only solution to the homogeneous system is zero — the nullspace is trivial.
+
+**Setup:** $A = \begin{bmatrix} 1 & 2 & 2 \\ 2 & 4 & 6 \end{bmatrix}$, solve $A\mathbf{x} = \mathbf{0}$.
+
+**Solution:** Elimination gives $R = \begin{bmatrix} 1 & 2 & 0 \\ 0 & 0 & 1 \end{bmatrix}$. Column 2 is free. Set it to 1 and solve: special solution $\mathbf{x}_s = (-2, 1, 0)^T$.
+
+**Key insight:** One free variable = one special solution. Set the free variable to 1, solve for the pivot variables.
+
+**Setup:** $A = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \end{bmatrix}$, solve $A\mathbf{x} = \mathbf{0}$.
+
+**Solution:** RREF is $\begin{bmatrix} 1 & 2 & 3 \\ 0 & 0 & 0 \end{bmatrix}$. Two free variables (columns 2 and 3). Two special solutions: $\mathbf{x}_{s1} = (-2, 1, 0)^T$ and $\mathbf{x}_{s2} = (-3, 0, 1)^T$. The nullspace is a plane in $\mathbb{R}^3$.
+
+**Key insight:** The nullspace matrix $N$ has the special solutions as columns — one per free variable, with that free variable set to 1 and the rest to 0.
+
 ---
-date: 2026-07-21
-type: linear-algebra-cluster
-tags: [linear-algebra, strang]
-lectures: [2, 7]
-prereq_clusters: ["01"]
-status: complete
-source: manual
----
-
-# 02 — Elimination and RREF
-
-## Concept Statement
-Run Gaussian elimination forward into $U$ (upper triangular) and backward into $R$ (reduced echelon form). Read pivots, free variables, and special solutions off $R$ without solving by hand.
-
-## Lecture Sources
-- Strang MIT 18.06, Lecture 2: *Elimination with Matrices*
-- Strang MIT 18.06, Lecture 7: *Solving $A\mathbf{x} = \mathbf{0}$ — Pivot Variables, Special Solutions*
-
-## Core Material
-
-### Gaussian Elimination (Forward, $A \to U$)
-
-Clearing sub-diagonal entries by subtracting multiples of pivot rows.
-
-- **Pivot** — the leading non-zero entry of a row used to eliminate below. Cannot be zero (would force a row exchange).
-- **Multiplier** — $l_{ij} = (\text{entry to eliminate}) / (\text{pivot})$. These are subtracted.
-- **Result** — an *upper triangular* $U$ with the same nullspace and column space as $A$.
-
-**Failure modes:**
-- *Temporary*: zero appears in a pivot position — fix with row exchange (permutation).
-- *Permanent*: no non-zero pivot available after all row swaps → singular matrix.
-
-### Elimination Matrices ($E$) and Permutation Matrices ($P$)
-
-Row operations as left-multiplication:
-- $E_{21}$: subtracts $\ell \times$ row 1 from row 2.
-- $P$: identity with rows reordered. Exchanging two rows is left-multiplying by the matching $P$.
-
-The full elimination sequence factors as $E \cdots E_2 E_1 A = U$.
-
-### RREF — Reduced Row Echelon Form
-
-Continue elimination *upwards* and divide each pivot row by its pivot. The result $R = \text{rref}(A)$ has:
-- Pivots exactly $1$, isolated.
-- Zero rows pushed to the bottom.
-- Other entries in pivot columns are $0$.
-
-### Reading Solutions Off $R$
-
-For $A\mathbf{x} = \mathbf{0}$, when $R$ is reorganised with pivot columns first:
-$$R = \begin{bmatrix} I & F \\ 0 & 0 \end{bmatrix}$$
-
-- **Pivot columns** ($r$ of them) — pivot variables determined.
-- **Free columns** ($n - r$ of them) — free variables, can take any value.
-
-**Special solutions** — set one free variable to $1$, the rest to $0$, solve for pivot variables. There are exactly $n - r$ special solutions, one per free column.
-
-**Nullspace matrix $N$:**
-$$N = \begin{bmatrix} -F \\ I \end{bmatrix}$$
-Columns are the special solutions. $RN = 0$ always.
-
-## Cross-Cluster Links
-- **Prereq**: [[01-Linear-Systems-and-Axb]]
-- **Next**: [[04-LU-Factorization]] (condenses elimination as $A = LU$)
-- **Forward**: [[06-Complete-Solutions-and-Rank]] (extends $R\mathbf{x} = \mathbf{0}$ to $R\mathbf{x} = \mathbf{c}$)
-- **Operator lens**: [[03-Matrix-Multiplication-and-Inverses]] (eliminators as matrices)
-
-## Thematic Summary
-The first half of the course is dominated by elimination. L2 hands you the forward sweep; L7 turns it around 180° and shows that the same algorithm simultaneously encodes *both* pivot-determined variables *and* free-variables-parameterised solutions. RREF is the canonical compressed form every textbook and computer uses to read out the structure of a linear system.
-
-## Glossary
-
-| Term | Definition |
-|------|------------|
-| **Pivot** | First non-zero entry of a row in $R$, used to eliminate entries beneath it. |
-| **Multiplier** | The scalar $l_{ij}$ multiplied into a pivot row and subtracted from a lower row to zero entry $(i,j)$. |
-| **Upper Triangular Matrix ($U$)** | $u_{ij} = 0$ for $i > j$; result of forward elimination. |
-| **Permutation Matrix ($P$)** | Identity with rows reordered. $P^T = P^{-1}$. |
-| **Elementary Matrix ($E_{ij}$)** | An identity matrix with $-l_{ij}$ inserted at $(i,j)$, applied via left-multiplication. |
-| **Row Reduced Echelon Form (RREF)** | Pivots are 1, isolated by zero rows/columns, zero rows at the bottom. |
-| **Rank ($r$)** | Number of pivots in $R$. Also equals column-space dimension. |
-| **Free Variable** | Variable corresponding to a non-pivot column — assignable to any value. |
-| **Special Solution** | A nullspace basis vector: one free var set to 1, rest to 0. |

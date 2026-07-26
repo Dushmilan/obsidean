@@ -1,38 +1,23 @@
----
-date: 2026-07-23
-type: stats-concept
-source: manual
-status: reviewed
-tags: [stats, confidence-intervals, inference]
----
-
 # Introduction to Confidence Intervals
 
-## 1. Core Concepts & Formulas
+A single poll result — say $\hat{p} = 0.54$ — looks precise, but it's just one snapshot from one sample. How much should you trust it? Confidence intervals answer that question by wrapping a margin of error around your estimate.
 
-* **Sample Proportion ($\hat{p}$):** The proportion observed in a sample.
-* **Standard Error ($\text{SE}$):** The estimated standard deviation of the sampling distribution of $\hat{p}$.
-  $$\text{SE}(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
-* **Margin of Error ($\text{MoE}$):** The distance added and subtracted from the sample statistic. For a **95% confidence level**, we use approximately 2 Standard Errors (specifically $z^* \approx 1.96$):
-  $$\text{MoE} = 2 \times \text{SE}(\hat{p})$$
-* **Confidence Interval ($\text{CI}$):** 
-  $$\text{CI} = \hat{p} \pm \text{MoE}$$
+**The Intuition:** Imagine fishing in a lake where the true proportion $p$ is a fish you can't see. Each sample is a cast of your net. A 95% confidence interval means if you cast 100 times, about 95 of those nets will capture the fish. You don't know which ones — but you know the method works 95% of the time.
+
+**The Math:** The standard error of a sample proportion is $\text{SE}(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$. For 95% confidence, multiply by $z^* \approx 1.96$ (or just 2) to get the margin of error: $\text{MoE} = 2 \times \text{SE}(\hat{p})$. The interval is $\text{CI} = \hat{p} \pm \text{MoE}$.
+
+**What does this mean for Statistics?** A confidence interval quantifies how much your estimate would vary if you repeated the study. It's the bridge between a single sample and a claim about the population — as long as you interpret it correctly (the probability is about the method, not the specific interval).
 
 ---
 
-## 2. Worked Example
+**Setup:** A poll shows $\hat{p} = 0.54$ with $\text{SE} = 0.05$. Construct a 95% CI.
 
-Suppose a poll shows Candidate A has a sample proportion of **$\hat{p} = 0.54$**, with a calculated **$\text{SE} = 0.05$**.
+**Solution:** $\text{MoE} = 2 \times 0.05 = 0.10$. $\text{CI} = 0.54 \pm 0.10 = [0.44,\, 0.64]$.
 
-1. **Margin of Error:**
-   $$\text{MoE} = 2 \times 0.05 = 0.10$$
-
-2. **95% Confidence Interval:**
-   $$\text{CI} = 0.54 \pm 0.10 \implies [0.44, 0.64]$$
+**Key insight:** We are 95% confident the true proportion $p$ lies between 44% and 64%. The width of this interval depends entirely on the standard error — smaller SE means tighter estimate.
 
 ---
 
-## 3. Interpretation
+**Interpretation trap:** "There's a 95% probability $p$ is in this interval" is technically wrong. The interval is fixed once calculated; $p$ is fixed too (we just don't know it). The 95% describes the long-run success rate of the procedure. Correct phrasing: "We are 95% confident that $p$ lies between..."
 
-* **Correct Interpretation:** We are **95% confident** that the true population proportion $p$ of voters supporting Candidate A lies between **0.44 and 0.64** (44% to 64%).
-* **Technical Nuance:** The 95% probability describes the *method*, not the specific interval once calculated. If we took 100 repeated random samples, about 95 of the resulting confidence intervals would successfully capture the true population parameter $p$.
+---

@@ -29,7 +29,14 @@ tags: [maths, pure, a-level, algebra]
 
 ## Proofs
 
-📁 [[Pure/Proofs/01-Algebra/]] — Full derivations for each subtopic
+- [[Pure/Proofs/01-Algebra/01-Real-Numbers-Surds-Proofs|Real Numbers & Surds]]
+- [[Pure/Proofs/01-Algebra/02-Indices-Proofs|Indices]]
+- [[Pure/Proofs/01-Algebra/03-Logarithms-Proofs|Logarithms]]
+- [[Pure/Proofs/01-Algebra/04-Polynomials-Proofs|Polynomials]]
+- [[Pure/Proofs/01-Algebra/05-Partial-Fractions-Proofs|Partial Fractions]]
+- [[Pure/Proofs/01-Algebra/06-Permutations-Combinations-Proofs|Permutations & Combinations]]
+- [[Pure/Proofs/01-Algebra/07-Binomial-Theorem-Proofs|Binomial Theorem]]
+- [[Pure/Proofs/01-Algebra/08-Mathematical-Induction-Proofs|Mathematical Induction]]
 
 ---
 

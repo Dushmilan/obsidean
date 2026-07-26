@@ -1,60 +1,23 @@
----
-date: 2026-07-21
-type: linear-algebra-cluster
-tags: [linear-algebra, strang]
-lectures: [8]
-prereq_clusters: ["02"]
-status: complete
-source: manual
----
+# Complete Solutions and the Rank Cases
 
-# 06 — Complete Solutions and the Rank Cases
+We know how to eliminate and factor — but what does the solution to $A\mathbf{x} = \mathbf{b}$ actually look like? The complete solution is a particular solution plus any nullspace vector: $\mathbf{x}_{\text{complete}} = \mathbf{x}_p + c_1 \mathbf{x}_{s1} + \cdots$. The number of solutions depends entirely on the rank $r$ of $A$. This is the complete answer to "what does $A\mathbf{x} = \mathbf{b}$ look like?" — it tells you both whether solutions exist and how many there are.
 
-## Concept Statement
-Solve $A\mathbf{x} = \mathbf{b}$ in full generality: a particular solution plus any nullspace vector. Categorise systems by rank to predict **how many** solutions exist.
+**The Intuition:** $\mathbf{x}_p$ is the "base camp" — one solution you can find easily by setting all free variables to zero. The nullspace is the "range of wandering" — directions you can move from base camp without leaving the solution set. Think of the solution set as a flat surface (line, plane, hyperplane) floating in $\mathbb{R}^n$, offset from the origin by $\mathbf{x}_p$. If $A\mathbf{x}_p = \mathbf{b}$ and $A\mathbf{x}_n = \mathbf{0}$, then $A(\mathbf{x}_p + \mathbf{x}_n) = \mathbf{b} + \mathbf{0} = \mathbf{b}$ — any combination of a particular solution and a nullspace vector is also a solution.
 
-## Lecture Sources
-- Strang MIT 18.06, Lecture 8: *Solving $A\mathbf{x} = \mathbf{b}$ — Row Reduced Form $R$*
+**The Math:** $A$ is $m \times n$ with rank $r$. $\mathbf{b}$ must be in $C(A)$ for solutions to exist. If $\mathbf{b}$ is not in $C(A)$, no solutions exist. If $r = n$, the nullspace is trivial and there is at most one solution. The solution set is an affine subspace — a translate of a subspace — not a subspace itself (it doesn't contain the origin unless $\mathbf{b} = \mathbf{0}$). There are infinitely many particular solutions (any $\mathbf{x}_p +$ nullspace vector works), but the one with free variables $= 0$ is the easiest to compute. Every matrix falls into exactly one of four rank cases: full rank ($m = n$, $r = n$) gives exactly 1 solution for every $\mathbf{b}$; full column rank ($m > n$, $r = n$) gives 0 or 1; full row rank ($m < n$, $r = m$) gives infinite solutions for every $\mathbf{b}$; defective ($r < m$, $r < n$) gives 0 or infinite.
 
-## Core Material
+**Worked Examples:**
 
-### Solubility
-$A\mathbf{x} = \mathbf{b}$ has a solution iff $\mathbf{b} \in C(A)$. Eliminating on $[A \mid \mathbf{b}]$ confirms: zeros on the RHS wherever a row of $A$ becomes zero.
+**Example 1: Full rank, unique solution.** $A = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$, $\mathbf{b} = (3, 5)^T$. RREF is $I$. No free variables. $\mathbf{x}_p = (3, 5)^T$. The solution is unique.
 
-### Particular Solution $\mathbf{x}_p$
-- Set **all** free variables to $0$ in $R\mathbf{x} = \mathbf{c}$.
-- Read pivot variables directly off.
-- $A\mathbf{x}_p = \mathbf{b}$ exactly.
+**Key insight:** Full rank means the nullspace is trivial — the only way to stay in the solution set is to not move at all.
 
-### Complete Solution Structure
-$$\mathbf{x}_\text{complete} = \mathbf{x}_p + c_1 \mathbf{x}_{s1} + c_2 \mathbf{x}_{s2} + \dots + c_{n-r} \mathbf{x}_{s(n-r)}$$
-The general solution is a particular solution plus arbitrary linear combination of special solutions.
+**Example 2: Full column rank, one solution.** $A = \begin{bmatrix} 1 & 2 \\ 2 & 4 \\ 1 & 1 \end{bmatrix}$, $\mathbf{b} = (5, 10, 3)^T$. Eliminate on $[A \mid \mathbf{b}]$ to check if $\mathbf{b}$ is in $C(A)$. It is. $r = 2 = n$, so no free variables. $\mathbf{x}_p = (1, 2)^T$ (unique).
 
-$\mathbf{x}_p$ **translates** the nullspace away from the origin — the complete-solution set is an **affine** line/plane/hyperplane through $\mathbf{x}_p$, parallel to $N(A)$.
+**Key insight:** Full column rank means at most one solution — existence depends entirely on whether $\mathbf{b}$ is reachable.
 
-### Four Rank Cases
+**Example 3: Full row rank, infinite solutions.** $A = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \end{bmatrix}$, $\mathbf{b} = (1, 2)^T$. $r = 1 < n = 3$. Two free variables. $\mathbf{x}_p = (1, 0, 0)^T$. Complete solution: $\mathbf{x} = (1, 0, 0)^T + c_1(-2, 1, 0)^T + c_2(-3, 0, 1)^T$.
 
-For $m \times n$ matrix $A$ of rank $r$:
+**Key insight:** Full row rank means solutions exist for every $\mathbf{b}$, but there are infinitely many — the nullspace gives you the freedom.
 
-| Case | Shape | $r$ | RREF $= R$ | Solutions to $A\mathbf{x}=\mathbf{b}$ |
-|------|-------|-----|------------|------|
-| **Full rank** | $m = n$ | $r = m = n$ | $I$ | exactly 1, for every $\mathbf{b}$ |
-| **Full column rank** | $m > n$ | $r = n$ | $\begin{bmatrix} I \\ 0 \end{bmatrix}$ | 0 or 1 |
-| **Full row rank** | $m < n$ | $r = m$ | $\begin{bmatrix} I & F \end{bmatrix}$ | infinitely many, for every $\mathbf{b}$ |
-| **Defective** | any | $r < m, r < n$ | $\begin{bmatrix} I & F \\ 0 & 0 \end{bmatrix}$ | 0 or infinitely many |
-
-## Cross-Cluster Links
-- **Prereq**: [[02-Elimination-and-RREF]] (RREF machinery)
-- **Forward**: [[07-Independence-Basis-Dimension]] (formalises $r$, $n-r$)
-- **Geometry**: [[08-Four-Fundamental-Subspaces]] ($C(A)$ dimension = $r$)
-
-## Thematic Summary
-Once elimination yields RREF, solutions reveal themselves as a translation of the nullspace. The four-rank-cases panel is the executive summary of "what does $A\mathbf{x} = \mathbf{b}$ look like?" — all four combinations of shape and solvability fit on one screen.
-
-## Glossary
-
-| Term | Definition |
-|------|------------|
-| **Particular Solution ($\mathbf{x}_p$)** | Any specific solution to $A\mathbf{x} = \mathbf{b}$; usually found by setting free vars to 0. |
-| **Affine Set** | A translate of a subspace: $\mathbf{x}_p + N(A)$. Not itself a subspace (origin not in it unless $\mathbf{x}_p = 0$). |
-| **Augmented Matrix $[A \mid \mathbf{b}]$** | $A$ with an extra column $\mathbf{b}$ glued on for simultaneous elimination. |
+Always check if $\mathbf{b}$ is in $C(A)$ before looking for solutions. Find $\mathbf{x}_p$ by setting free variables to 0, find the nullspace by solving $A\mathbf{x} = \mathbf{0}$, then combine: $\mathbf{x}_{\text{complete}} = \mathbf{x}_p + N(A)$.

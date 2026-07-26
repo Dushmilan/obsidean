@@ -14,38 +14,38 @@ tags:
 
 ## 🗃️ Data Structures
 
-| Topic | Hub | Status |
-|-------|-----|--------|
-| **01 Arrays** | [[DS/01-Arrays/Arrays.md]] | 🟢 Complete |
-| **02 Strings** | [[DS/02-Strings/Strings.md]] | 🟢 Complete |
-| **03 Linked Lists** | [[DS/03-Linked-Lists/Linked-Lists.md]] | 🟢 Complete |
-| **04 Stacks** | [[DS/04-Stacks/Stacks.md]] | 🟢 Complete |
-| **05 Queues** | [[DS/05-Queues/Queues.md]] | 🟢 Complete |
-| **06 Hash Tables** | [[DS/06-Hash-Tables/Hash-Tables.md]] | 🟢 Complete |
-| **07 Trees** | [[DS/07-Trees/Trees.md]] | 🟢 Complete |
-| **08 Graphs** | [[DS/08-Graphs/Graphs.md]] | 🟢 Complete |
+| Topic               | Hub                                    |
+| ------------------- | -------------------------------------- |
+| **01 Arrays**       | [[DS/01-Arrays/Arrays.md]]             |
+| **02 Strings**      | [[DS/02-Strings/Strings.md]]           |
+| **03 Linked Lists** | [[DS/03-Linked-Lists/Linked-Lists.md]] |
+| **04 Stacks**       | [[DS/04-Stacks/Stacks.md]]             |
+| **05 Queues**       | [[DS/05-Queues/Queues.md]]             |
+| **06 Hash Tables**  | [[DS/06-Hash-Tables/Hash-Tables.md]]   |
+| **07 Trees**        | [[DS/07-Trees/Trees.md]]               |
+| **08 Graphs**       | [[DS/08-Graphs/Graphs.md]]             |
 
 ## ⚙️ Algorithms
 
-| Topic | Hub | Status |
-|-------|-----|--------|
-| **01 Sorting** | [[Algo/01-Sorting/Sorting.md]] | 🟢 Complete |
-| **02 Searching** | [[Algo/02-Searching/Searching.md]] | 🟢 Complete |
-| **03 Two Pointers** | [[Algo/03-Two-Pointers/Two-Pointers.md]] | 🟢 Complete |
-| **04 Sliding Window** | [[Algo/04-Sliding-Window/Sliding-Window.md]] | 🟢 Complete |
-| **05 Recursion & Backtracking** | [[Algo/05-Recursion-Backtracking/Recursion-Backtracking.md]] | 🟢 Complete |
-| **06 Divide & Conquer** | [[Algo/06-Divide-Conquer/Divide-Conquer.md]] | 🟢 Complete |
-| **07 Greedy** | [[Algo/07-Greedy/Greedy.md]] | 🟢 Complete |
-| **08 Dynamic Programming** | [[Algo/08-Dynamic-Programming/Dynamic-Programming.md]] | 🟢 Complete |
-| **09 Graph Algorithms** | [[Algo/09-Graph-Algos/Graph-Algos.md]] | 🟢 Complete |
-| **10 Bit Manipulation** | [[Algo/10-Bit-Manipulation/Bit-Manipulation.md]] | 🟢 Complete |
+| Topic                           | Hub                                                          |
+| ------------------------------- | ------------------------------------------------------------ |
+| **01 Sorting**                  | [[Algo/01-Sorting/Sorting.md]]                               |
+| **02 Searching**                | [[Algo/02-Searching/Searching.md]]                           |
+| **03 Two Pointers**             | [[Algo/03-Two-Pointers/Two-Pointers.md]]                     |
+| **04 Sliding Window**           | [[Algo/04-Sliding-Window/Sliding-Window.md]]                 |
+| **05 Recursion & Backtracking** | [[Algo/05-Recursion-Backtracking/Recursion-Backtracking.md]] |
+| **06 Divide & Conquer**         | [[Algo/06-Divide-Conquer/Divide-Conquer.md]]                 |
+| **07 Greedy**                   | [[Algo/07-Greedy/Greedy.md]]                                 |
+| **08 Dynamic Programming**      | [[Algo/08-Dynamic-Programming/Dynamic-Programming.md]]       |
+| **09 Graph Algorithms**         | [[Algo/09-Graph-Algos/Graph-Algos.md]]                       |
+| **10 Bit Manipulation**         | [[Algo/10-Bit-Manipulation/Bit-Manipulation.md]]             |
 
 ---
 
 ## 📖 Reference
 
-- [[Reference/Index.md|Complexity Cheatsheet & Templates]]
-- [[Cross/Index.md|Cross-Problem Patterns]]
+- [[Reference/DSA-Reference-Index.md|Complexity Cheatsheet & Templates]]
+- [[Cross/DSA-Cross-Index.md|Cross-Problem Patterns]]
 
 ---
 
