@@ -10,8 +10,8 @@ tags: [maths, physics, waves, cross-ref]
 
 | Maths | Physics |
 |-------|---------|
-| [[Maths/Pure/03-Trigonometry/03-Trigonometry-Hub|Pure Maths: Trigonometry]] | [[Physics/04-Waves-Optics/04.1-Wave-Motion|Physics: 4.1 Wave Motion]] |
-| [[Maths/Pure/03-Trigonometry/03-Trigonometry-Hub|Pure Maths: Trigonometry]] | [[Physics/04-Waves-Optics/04.4-Wave-Optics|Physics: 4.4 Wave Optics]] |
+| [[Maths/Pure/03-Trigonometry/03-Trigonometry_Index]] | [[Physics/04-Waves-Optics/04.1-Wave-Motion]] |
+| [[Maths/Pure/03-Trigonometry/03-Trigonometry_Index]] | [[Physics/04-Waves-Optics/04.4-Wave-Optics]] |
 
 ## Maths Topics Used
 - Trigonometry (sin/cos wave equations, superposition)

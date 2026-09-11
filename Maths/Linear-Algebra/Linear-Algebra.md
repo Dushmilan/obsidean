@@ -1,5 +1,5 @@
 ---
-date: 2026-07-21
+date: 2026-08-16
 type: hub
 tags: [maths, linear-algebra, strang, self-study]
 ---
@@ -8,65 +8,60 @@ tags: [maths, linear-algebra, strang, self-study]
 
 > Self-study track | 35 lectures | Isolated from GCE A/L syllabus
 
----
-
-## Clusters (L1–L15)
-
-| # | Topic | Hub | Lectures | Status |
-|---|-------|-----|----------|--------|
-| 01 | **Linear Systems and $A\mathbf{x} = \mathbf{b}$** | [[01-Linear-Systems-and-Axb]] | L1 | Done |
-| 02 | **Elimination and RREF** | [[02-Elimination-and-RREF]] | L2, L7 | Done |
-| 03 | **Matrix Multiplication and Inverses** | [[03-Matrix-Multiplication-and-Inverses]] | L3 | Done |
-| 04 | **LU Factorization** | [[04-LU-Factorization]] | L4 | Done |
-| 05 | **Transposes, Permutations, Spaces** | [[05-Transposes-Permutations-Spaces]] | L5, L6 | Done |
-| 06 | **Complete Solutions and Rank** | [[06-Complete-Solutions-and-Rank]] | L8 | Done |
-| 07 | **Independence, Basis, Dimension** | [[07-Independence-Basis-Dimension]] | L9 | Done |
-| 08 | **Four Fundamental Subspaces** | [[08-Four-Fundamental-Subspaces]] | L10 | Done |
-| 09 | **Matrix Spaces and Rank 1** | [[09-Matrix-Spaces-and-Rank1]] | L11 | Done |
-| 10 | **Graphs, Networks, Incidence** | [[10-Graphs-Networks-Incidence]] | L12 | Done |
-| 11 | **Quiz 1 — Synthesis** | [[11-Quiz-1-Synthesis]] | L13 | Done |
-| 12 | **Orthogonal Vectors & Subspaces** | [[12-Orthogonal-Vectors-Subspaces]] | L14 | Done |
-| 13 | **Projections & Least Squares** | [[13-Projections-Least-Squares]] | L15 | Done |
-
-**Total:** 13 clusters, 15 lectures done
+Each cluster is its own sub-vault with an `_Index.md` and deep sub-notes.
 
 ---
 
-## Forward Slots (L16–L35)
+## Clusters (L1–L18)
+
+| # | Cluster | Sub-Vault | Lectures | Notes |
+|---|---------|-----------|----------|-------|
+| 01 | **Linear Systems & $A\mathbf{x} = \mathbf{b}$** | [[01-Linear-Systems/01-Linear-Systems_Index.md]] | L1 | 2 |
+| 02 | **Elimination & RREF** | [[02-Elimination/02-Elimination_Index.md]] | L2, L7 | 2 |
+| 03 | **Matrix Multiplication & Inverses** | [[03-Multiplication-Inverses/03-Multiplication-Inverses_Index.md]] | L3 | 2 |
+| 04 | **LU Factorization** | [[04-LU/04-LU_Index.md]] | L4 | 2 |
+| 05 | **Transposes, Permutations** | [[05-Transposes-Permutations/05-Transposes-Permutations_Index.md]] | L5, L6 | 2 |
+| 06 | **Complete Solutions & Rank** | [[06-Complete-Solutions/06-Complete-Solutions_Index.md]] | L8 | 2 |
+| 07 | **Independence, Basis, Dimension** | [[07-Independence-Basis/07-Independence-Basis_Index.md]] | L9 | 2 |
+| 08 | **Four Fundamental Subspaces** | [[08-Four-Subspaces/08-Four-Subspaces_Index.md]] | L10 | 1 |
+| 09 | **Matrix Spaces & Rank 1** | [[09-Matrix-Spaces-Rank1/09-Matrix-Spaces-Rank1_Index.md]] | L11 | 2 |
+| 10 | **Graphs, Networks, Incidence** | [[10-Graphs-Networks/10-Graphs-Networks_Index.md]] | L12 | 2 |
+| 11 | **Quiz 1 — Synthesis** | [[11-Quiz-Synthesis/11-Quiz-Synthesis_Index.md]] | L13 | 1 |
+| 12 | **Orthogonality** | [[12-Orthogonality/12-Orthogonality_Index.md]] | L14 | 2 |
+| 13 | **Projections & Least Squares** | [[13-Projections-LeastSquares/13-Projections-LeastSquares_Index.md]] | L15 | 2 |
+| 14 | **Determinants** | [[14-Determinants/14-Determinants_Index.md]] | L18–L20 | 2 |
+
+**Total:** 14 clusters · L1–L18 complete · 26 deep sub-notes
+
+---
+
+## Forward Slots (next: L21+)
 
 | # | Topic | Lectures | Status |
 |---|-------|----------|--------|
-| 14 | Pending | L16+ | Todo |
-| 15 | Pending | — | Todo |
-| 16 | Pending | — | Todo |
-| 17 | Pending | — | Todo |
-| 18 | Pending | — | Todo |
+| 15 | Eigenvalues | L21+ | Todo |
+| 16 | Diagonalisation | L22+ | Todo |
+| 17 | Symmetric & SVD | L25+ | Todo |
+| 18 | Linear Transformations | L30+ | Todo |
 | 19 | Pending | — | Todo |
-
-*(Filled as lectures arrive.)*
 
 ---
 
 ## Quick Navigation
 
-- **Start:** [[01-Linear-Systems-and-Axb|$A\mathbf{x} = \mathbf{b}$]]
-- **End:** [[13-Projections-Least-Squares|Least Squares]]
 
 ---
 
-## Progress Summary
-
-```
-┌──────────────────────┬─────────┬──────────┬─────────┐
-│ Section              │ Clusters│ Lectures │ Status  │
-├──────────────────────┼─────────┼──────────┼─────────┤
-│ First half (L1–L15)  │   13    │    15    │ Done    │
-│ Second half (L16–L35)│   —     │    20    │ Todo    │
-├──────────────────────┼─────────┼──────────┼─────────┤
-│ Total                │   —     │   35     │         │
-└──────────────────────┴─────────┴──────────┴─────────┘
-```
+**Up:** [[Maths]]
 
 ---
 
-*Last updated: 2026-07-23 | Vault root: `Maths/`*
+*Last updated: 2026-08-16 | Vault root: `Maths/Linear-Algebra/`*
+
+---
+
+### Child Indexes
+- [[Cross_Index]]
+- [[Reference_Index]]
+
+- [[Proofs_Index]]

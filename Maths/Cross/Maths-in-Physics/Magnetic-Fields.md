@@ -10,7 +10,7 @@ tags: [maths, physics, magnetic-fields, cross-ref]
 
 | Maths | Physics |
 |-------|---------|
-| [[Maths/Vector Methods/12.4-Cross-Product|Maths: Cross Product]] | [[Physics/05-Electricity-Magnetism/05.4-Magnetic-Fields|Physics: 5.4 Magnetic Fields]] |
+| [[Maths/Vector-Methods/12.4-Cross-Product]] | [[Physics/05-Electricity-Magnetism/05.4-Magnetic-Fields]] |
 
 ## Maths Topics Used
 - Cross product (F = qv × B)

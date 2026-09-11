@@ -10,8 +10,8 @@ tags: [maths, physics, electric-fields, cross-ref]
 
 | Maths | Physics |
 |-------|---------|
-| [[Maths/Vector Methods/Vector-Methods-Hub|Vector Methods]] | [[Physics/05-Electricity-Magnetism/05.1-Electric-Fields|Physics: 5.1 Electric Fields]] |
-| [[Maths/Pure/04-Calculus/04-Calculus-Hub|Pure Maths: Calculus]] | [[Physics/05-Electricity-Magnetism/05.1-Electric-Fields|Physics: 5.1 Electric Fields]] |
+| [[Maths/Vector-Methods/Vector_Methods_Index]] | [[Physics/05-Electricity-Magnetism/05.1-Electric-Fields]] |
+| [[Maths/Pure/04-Calculus/04-Calculus_Index]] | [[Physics/05-Electricity-Magnetism/05.1-Electric-Fields]] |
 
 ## Maths Topics Used
 - Vectors (field vectors, force direction)

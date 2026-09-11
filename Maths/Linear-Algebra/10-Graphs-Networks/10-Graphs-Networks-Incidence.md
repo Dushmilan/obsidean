@@ -1,0 +1,13 @@
+# Graphs, Networks, and Incidence Matrices
+
+The incidence matrix is where abstract linear algebra acquires physical traction. It encodes the topology of a directed graph: rows are edges, columns are nodes, entries are $-1$ (departure) and $+1$ (arrival). The four subspaces of the incidence matrix correspond directly to Kirchhoff's voltage and current laws — this is the concrete instantiation of 08-Four-Fundamental-Subspaces. It also connects to 12-Orthogonal-Vectors-Subspaces between row space and nullspace.
+
+**The Intuition:** Think of a network of pipes (edges) connecting junctions (nodes). The incidence matrix records which pipe connects which junctions, and in what direction. Each row is a rule: "the potential at node $i$ minus the potential at node $j$ equals the drop across edge $k$." Kirchhoff's laws read out directly as nullspace statements.
+
+**The Math:** $A$ is $m \times n$ for a graph with $m$ edges and $n$ nodes. Row $k$ has $-1$ at the departing node and $+1$ at the arriving node of edge $k$. If $\mathbf{x}$ stores potentials at nodes, then $(A\mathbf{x})_k = x_j - x_i$ for edge $k$ from node $i$ to node $j$ — the voltage drop across the edge. $A\mathbf{x} = \mathbf{0}$ means zero drop across every edge: all nodes share the same potential, $\mathbf{x} = (c, c, \ldots, c)^T$. For a connected graph, this is a line (dimension 1). $A^T \mathbf{y} = \mathbf{0}$ means the net current entering each node is zero — Kirchhoff's Current Law. The basis vectors of $N(A^T)$ correspond to independent closed loops, and there are $m - n + 1$ of them for a connected graph. The rank is $n - 1$. For a disconnected graph, the nullspace dimension equals the number of connected components.
+
+**Setup:** Three nodes, three edges forming a triangle: $1 \to 2$, $2 \to 3$, $1 \to 3$.
+
+**Solution:** $A = \begin{bmatrix} -1 & 1 & 0 \\ 0 & -1 & 1 \\ -1 & 0 & 1 \end{bmatrix}$. Rank = 2. $N(A) = \text{span}\{(1,1,1)^T\}$ — constant potential, the equilibrium. $N(A^T) = \text{span}\{(1,1,-1)^T\}$ — the loop current. For a tree (no loops), like four nodes with edges $1 \to 2$, $1 \to 3$, $1 \to 4$: rank = 3, $N(A^T) = \{0\}$ since there are no loops.
+
+**Key insight:** KCL requires $A^T \mathbf{y} = \mathbf{0}$ — the net current at every node must be zero. If currents $\mathbf{y} = (2, 1, 1)^T$ on the triangle graph, then $A^T \mathbf{y} = (-3, 1, 3)^T \neq \mathbf{0}$, so KCL fails. The four subspaces have direct physical interpretations: $C(A^T)$ is potential differences along edges, $N(A)$ is equilibrium potentials, $C(A)$ is reachable edge states, and $N(A^T)$ is current distributions satisfying KCL. This framework applies to electrical circuits, fluid networks, traffic flow, and structural trusses.

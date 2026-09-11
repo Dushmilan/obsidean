@@ -106,12 +106,26 @@ tags: [physics, cross-reference, problem-patterns, notation, derivations, maths-
 
 ---
 
+## 🎓 University GP1 Supplements — Base Attachments
+
+> All 4 supplements merged from `University/Semester 1/` into main Physics bases below (originals deleted). Indexed in their base sub-vaults.
+
+| Supplement | Base Directory | Vault Gap Covered | Linked From |
+|------------|----------------|-------------------|-------------|
+| [[Physics/03-Thermal-Physics/GP1-Supplement-Zeroth-Law\|Zeroth Law]] | `Physics/03-Thermal-Physics/` (03.0 foundation) | Why $T$ is definable; `∼` = equivalence relation | [[Physics/03-Thermal-Physics/03-Thermal-Physics_Index\|03 Index]] · [[Maths/Abstract-Algebra-1/01-Sets-Relations-Functions\|Maths 01-Sets]] |
+| [[Physics/03-Thermal-Physics/GP1-Supplement-Thermal-Machines\|Thermal Machines]] | `Physics/03-Thermal-Physics/` (03.7) | `η_max=1-Tc/Th`, `COP_R=Tc/(Th-Tc)` | [[Physics/03-Thermal-Physics/03-Thermal-Physics_Index\|03 Index]] |
+| [[Physics/04-Waves-Optics/GP1-Supplement-Lloyds-Mirror\|Lloyd's Mirror]] | `Physics/04-Waves-Optics/` (04.4-S) | $π$ flip on denser-medium reflection | [[Physics/04-Waves-Optics/04-Waves-Optics_Index\|04 Index]] |
+| [[Physics/04-Waves-Optics/GP1-Supplement-Special-Relativity\|Special Relativity]] | `Physics/04-Waves-Optics/` (04.6-S) + `02-Mechanics` | $γ$, time dilation, length contraction, EM Doppler | [[Physics/04-Waves-Optics/04-Waves-Optics_Index\|04 Index]] |
+| [[Physics/Cross/GP1-Syllabus-Map\|GP1 Syllabus Map]] | Hub map for GP1 (merged from `University/Semester 1/`) | Full 12-unit Meas→Waves wiring | [[Physics_Index]] |
+
+> `Physics/Cross/GP1-Syllabus-Map.md` is course-map hub (migrated from `University/Semester 1/` 2026-09-01); supplements above adhere to `Physics Note Format` and carry YAML `base: Physics/...` for Dataview queries: ``WHERE base = "Physics/03-Thermal-Physics"``.
+
 ## 🔗 Quick Links
 
-- [[../Physics|← Back to Physics Hub]]
-- [[../Reference/Physics-Reference-Index|Reference — Code Patterns & Papers]]
-- [[../../Maths/Cross/Maths-Cross-Index|Maths Cross-References]]
-- [[../Derivations/01-Measurement/01.1-SI-Base-Units-Proofs|All Derivations]]
+- [[Physics_Index]]
+- [[Physics-Reference-Index]]
+- [[Maths-Cross_Index]]
+- [[01.1-SI-Base-Units-Proofs]]
 
 ---
 

@@ -1,42 +1,66 @@
 # Assessing the Fit in Least-Squares Regression
 
-Getting a regression line $\hat{y} = a + bx$ is easy. Knowing whether it's any good — whether the model is appropriate, how precise the predictions are, and how much variance it explains — that's the real work.
+## Definition
 
-**The Intuition:** Residuals are the "mistakes" your line makes. If the line fits well, the residuals should look like random noise — no pattern, no trend, no fanning. If you see a curve or a funnel, the linear model is wrong and you need a different approach.
+Whether a fitted line is any good:
 
-**The Math:** A residual is $e_i = y_i - \hat{y}_i$. The standard deviation of residuals is $s = \sqrt{\frac{\sum(y_i - \hat{y}_i)^2}{n-2}}$ — your typical prediction error in the original units of $y$. The coefficient of determination is $R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}}$, where $SS_{\text{tot}} = \sum(y_i - \bar{y})^2$ and $SS_{\text{res}} = \sum(y_i - \hat{y}_i)^2$.
+- **Residual:** $e_i = y_i - \hat{y}_i$ — the line's "mistake" at $x_i$.
+- **Residual SD:** $s = \sqrt{\frac{\sum(y_i-\hat{y}_i)^2}{n-2}}$ — typical prediction error in the units of $y$.
+- **Coefficient of determination:** $R^2 = 1 - \frac{SS_{res}}{SS_{tot}}$ — proportion of variance explained.
 
-**What does this mean for Statistics?** $R^2$ tells you what *proportion* of the variability in $y$ is explained by the linear relationship with $x$. An $R^2 = 0.84$ means 84% of the variation is accounted for. The remaining 16% is unexplained scatter. The $n - 2$ degrees of freedom in $s$ reflects that you estimated two parameters ($a$ and $b$) from the data.
+| Metric | Measures | Range |
+|--------|----------|-------|
+| $r$ | direction + strength of linear association | $-1$ to $+1$ |
+| $R^2$ | proportion of variance in $y$ explained | 0–100% |
+| $s$ | typical prediction error | 0–∞ |
 
-| Metric | What it measures | Range |
-|--------|------------------|-------|
-| $r$ | Direction and strength of linear association | $-1$ to $+1$ |
-| $R^2$ | Proportion of variance in $y$ explained by $x$ | $0$ to $1$ (or 0% to 100%) |
-| $s$ | Typical prediction error (same units as $y$) | $0$ to $\infty$ |
+## The Intuition
+
+Residuals are the line's mistakes. Good fit → residuals look like random noise (no pattern, no fan). A curve or funnel in the residual plot means the linear model is wrong.
+
+## The Toolkit
+
+| Quantity | Formula |
+|----------|---------|
+| Residual | $e_i = y_i - \hat{y}_i$ |
+| Residual SD | $s = \sqrt{\frac{\sum(y_i-\hat{y}_i)^2}{n-2}}$ |
+| $R^2$ | $1 - \frac{SS_{res}}{SS_{tot}}$ |
+
+## Derivation
+
+$R^2 = r^2$ for simple regression — the squared correlation equals the explained-variance proportion. The $n-2$ degrees of freedom reflect the two estimated parameters ($a, b$). [Full derivations: [[Linear Regression]]]
+
+## Method
+
+1. **Plot the residuals** — random scatter = appropriate model; pattern = wrong model.
+2. Interpret $R^2$ (relative) and $s$ (absolute, same units as $y$).
+3. Look for outliers / leverage / influential points.
+
+## Worked Examples
+
+**Setup:** A residual plot shows a U-shape.
+
+**Solution:** The linear model is inappropriate — consider a quadratic or transformation.
+
+**Key insight:** Any visible pattern in residuals means the model is wrong, regardless of $R^2$.
 
 ---
 
-**Setup:** A residual plot shows a U-shaped pattern. What now?
+**Setup:** $s = 25.3$ predicting house prices (thousands of $).
 
-**Solution:** The linear model is inappropriate. The curved pattern indicates a non-linear relationship — consider a quadratic model or transformation.
+**Solution:** Predictions are typically off by about \$25,300.
 
-**Key insight:** Random scatter in the residual plot means the linear model is appropriate. Any visible pattern means it isn't, no matter how high $R^2$ is.
+**Key insight:** $R^2$ is relative; $s$ is absolute — the most intuitive accuracy measure.
 
----
+## Common Traps
 
-**Setup:** $s = 25.3$ for a model predicting house prices (in thousands of dollars). Interpret.
+- High $R^2$ with patterned residuals — still a bad model
+- Outlier in $y$ (big residual) vs high leverage (extreme $x$) vs influential (changes the model)
+- Degrees of freedom $n-2$, not $n$
+- Residuals must be checked by plotting, not just summarised
 
-**Solution:** When using the regression line to predict house prices, predictions will typically be off by about $\$25{,}300$.
+## Connections
 
-**Key insight:** $s$ is in the same units as $y$ — it's the most intuitive measure of prediction accuracy. $R^2$ is relative; $s$ is absolute.
-
----
-
-**Outliers vs leverage vs influence:**
-- **Outlier in $y$:** large residual, pulls the line up/down, decreases $R^2$
-- **High leverage point:** extreme $x$-value, acts as a lever on the slope
-- **Influential point:** removing it changes the model significantly (slope, intercept, or $R^2$)
-
-Always check residual plots and look for points that stand apart from the rest.
-
----
+- [[Linear Regression]] — the fit · [[More on Regression]] — inference
+- [[Bias in Sampling]] — data quality limits fit
+- [[Maths/Pure/04-Calculus/08-Partial-Differentiation/04.8-Partial-Differentiation]]

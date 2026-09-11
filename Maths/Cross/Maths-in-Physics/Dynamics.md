@@ -10,8 +10,8 @@ tags: [maths, physics, dynamics, cross-ref]
 
 | Maths | Physics |
 |-------|---------|
-| [[Maths/Applied/02-Dynamics/02-Dynamics-Hub|Applied Maths: Dynamics]] | [[Physics/02-Mechanics/02.2-Dynamics|Physics: 2.2 Dynamics]] |
-| [[Maths/Applied/02-Dynamics/02.3-Work-Energy-Power|Maths: Work-Energy]] | [[Physics/02-Mechanics/02.3-Work-Energy-Power|Physics: 2.3 Work-Energy-Power]] |
+| [[Maths/Applied/02-Dynamics/02-Dynamics_Index]] | [[Physics/02-Mechanics/02.2-Dynamics]] |
+| [[Maths/Applied/02-Dynamics/02.3-Work-Energy-Power-Dynamics]] | [[Physics/02-Mechanics/02.3-Work-Energy-Power]] |
 
 ## Maths Topics Used
 - Vectors (force resolution, free-body diagrams)

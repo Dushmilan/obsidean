@@ -1,17 +1,54 @@
 # Linear Regression
 
-Correlation tells you *whether* two variables are related. Regression tells you *how* — it fits a line through the data so you can predict one variable from the other.
+## Definition
 
-**The Intuition:** Imagine drawing a straight line through a cloud of points. You want the line to go through the "middle" of the cloud, as close as possible to all the points simultaneously. That's exactly what least-squares regression does — it minimises the sum of squared vertical distances (residuals) between the points and the line.
+Fitting a line to predict one variable from another:
 
-**The Math:** The least-squares line is $\hat{y} = a + bx$, where $b = r \cdot \frac{s_y}{s_x}$ is the slope and $a = \bar{y} - b\bar{x}$ is the intercept. The slope $b$ tells you how much $y$ changes for each unit increase in $x$. The intercept $a$ is the predicted $y$ when $x = 0$.
+$$\hat{y} = a + bx, \qquad b = r\cdot\frac{s_y}{s_x}, \qquad a = \bar{y} - b\bar{x}$$
 
-**What does this mean for Statistics?** Regression is the workhorse of prediction and causal inference. Once you have the line, you can predict $y$ for any $x$, test whether the slope is significantly different from zero, and quantify how much variability the model explains.
+$b$ = slope (change in $y$ per unit $x$); $a$ = intercept (predicted $y$ at $x = 0$). The line always passes through $(\bar{x}, \bar{y})$.
 
----
+## The Intuition
 
-**Key insight:** The line always passes through $(\bar{x}, \bar{y})$ — the point of means. This is a useful sanity check: if someone gives you a regression line that doesn't go through the means, something's wrong.
+Draw a straight line through a cloud of points — as close to all of them as possible. Least squares minimises the sum of squared vertical distances (residuals) between the points and the line.
 
-**Residual:** $e_i = y_i - \hat{y}_i$. The sum of residuals is always zero in least-squares regression — positive and negative residuals cancel out by construction.
+## The Toolkit
 
----
+| Quantity | Formula |
+|----------|---------|
+| Slope | $b = r\frac{s_y}{s_x}$ |
+| Intercept | $a = \bar{y} - b\bar{x}$ |
+| Residual | $e_i = y_i - \hat{y}_i$ |
+| Residual sum | $\sum e_i = 0$ (by construction) |
+
+## Derivation
+
+Minimise $\sum(y_i - a - bx_i)^2$ by setting the partial derivatives to zero — solving the two normal equations gives $b = r s_y/s_x$ and $a = \bar{y} - b\bar{x}$. [Full derivations: [[Maths/Pure/04-Calculus/08-Partial-Differentiation/04.8-Partial-Differentiation]]]
+
+## Method
+
+1. Check the scatterplot is roughly linear.
+2. Compute $\bar{x}, \bar{y}, s_x, s_y, r$.
+3. $b = r s_y/s_x$; $a = \bar{y} - b\bar{x}$.
+4. Sanity check: the line passes through the means.
+
+## Worked Examples
+
+**Setup:** Given $\bar{x} = 50$, $\bar{y} = 80$, $s_x = 10$, $s_y = 15$, $r = 0.8$, find the line.
+
+**Solution:** $b = 0.8\times\frac{15}{10} = 1.2$; $a = 80 - 1.2\times50 = 20$. So $\hat{y} = 20 + 1.2x$.
+
+**Key insight:** Each unit of $x$ predicts $+1.2$ units of $y$.
+
+## Common Traps
+
+- Extrapolating beyond the data range
+- Interpreting $a$ when $x = 0$ is meaningless for the data
+- Using regression on curved relationships
+- Residuals always sum to zero — check it as a sanity test
+
+## Connections
+
+- [[Least Squares regression]] — assessing fit · [[More on Regression]] — inference
+- [[Correlation]] — where $r$ comes from
+- [[Maths/Pure/04-Calculus/08-Partial-Differentiation/04.8-Partial-Differentiation]] — the minimisation

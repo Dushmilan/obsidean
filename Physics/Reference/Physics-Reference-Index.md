@@ -79,8 +79,8 @@ Reference/Papers/
 
 ## 🔗 Quick Links
 
-- [[../Physics|← Back to Physics Hub]]
-- [[../Cross/Physics-Cross-Index|Cross-References]]
+- [[Physics_Index]]
+- [[Physics-Cross-Index]]
 
 ---
 

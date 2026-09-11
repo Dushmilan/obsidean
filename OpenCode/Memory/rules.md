@@ -40,7 +40,7 @@ OpenCode/
 - Every significant decision gets its own file in `Decisions/`
 - Every technical concept/paper/pattern goes in `Knowledge Base/`
 - Random mid-session thoughts go in `Inbox/` immediately
-- All notes use Obsidian `[[wikilinks]]` for graph connectivity
+- All notes use Obsidian wikilinks for graph connectivity
 - Never write AI-sounding language in PRs, commits, comments, or any public-facing communication. Messages must sound human, direct, and natural — no boilerplate, no robotic phrasing, no filler.
 
 ## Communication Rules

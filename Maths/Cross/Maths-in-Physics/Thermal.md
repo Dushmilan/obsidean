@@ -10,7 +10,7 @@ tags: [maths, physics, thermal, cross-ref]
 
 | Maths | Physics |
 |-------|---------|
-| [[Maths/Pure/04-Calculus/04-Calculus-Hub|Pure Maths: Calculus]] | [[Physics/03-Thermal-Physics/03-Thermal-Physics-Hub|Physics: Unit 3 Thermal Physics]] |
+| [[Maths/Pure/04-Calculus/04-Calculus_Index]] | [[Physics/03-Thermal-Physics/03-Thermal-Physics_Index]] |
 
 ## Maths Topics Used
 - Calculus (thermodynamic processes, area under P-V graph)

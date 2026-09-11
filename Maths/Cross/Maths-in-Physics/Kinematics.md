@@ -10,7 +10,7 @@ tags: [maths, physics, kinematics, cross-ref]
 
 | Maths | Physics |
 |-------|---------|
-| [[Maths/Applied/01-Kinematics/01-Kinematics-Hub|Applied Maths: Kinematics]] | [[Physics/02-Mechanics/02.1-Kinematics|Physics: 2.1 Kinematics]] |
+| [[Maths/Applied/01-Kinematics/01-Kinematics_Index]] | [[Physics/02-Mechanics/02.1-Kinematics]] |
 
 ## Maths Topics Used
 - Differentiation (velocity = ds/dt, acceleration = dv/dt)

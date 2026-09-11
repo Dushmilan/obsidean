@@ -1,31 +1,61 @@
 # Estimating a Population Proportion
 
-When your data is binary — success or failure, yes or no, 1 or 0 — the sample proportion $\hat{p} = x/n$ is your statistic of interest. But how reliable is it? This is where standard error and confidence intervals for proportions come in.
+## Definition
 
-**The Intuition:** Think of flipping a biased coin 250 times and getting 142 heads. Your $\hat{p} = 0.568$ is an estimate, but if you flipped another 250 times you'd get a slightly different number. The standard error tells you how much that number would wiggle across repeated experiments.
+For binary data (yes/no, 1/0), the sample proportion $\hat p = x/n$ estimates the population proportion $p$:
 
-**The Math:** For binary data, the sample variance is $s^2 = \frac{n}{n-1}\hat{p}(1-\hat{p})$ and the standard error is $\text{SE}(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$. The margin of error scales with $z^*$: use $z^* \approx 1.96$ for 95% confidence, $z^* \approx 2.58$ for 99%. The interval is $\hat{p} \pm z^* \times \text{SE}(\hat{p})$.
+$$\text{SE}(\hat p) = \sqrt{\frac{\hat p(1-\hat p)}{n}}, \qquad \text{CI} = \hat p \pm z^*\,\text{SE}$$
 
-**What does this mean for Statistics?** The SE shrinks with $\sqrt{n}$ — quadrupling your sample halves the margin of error. The trade-off between confidence level and interval width is direct: 99% CI is always wider than 95% CI for the same data.
+$z^* \approx 1.96$ (95%), $2.58$ (99%). Sample variance $s^2 = \frac{n}{n-1}\hat p(1-\hat p)$.
+
+## The Intuition
+
+Flip a biased coin 250 times, get 142 heads: $\hat p = 0.568$. Flip another 250 and you'd get a slightly different number — the SE tells you how much it wiggles across repeated experiments.
+
+## The Toolkit
+
+| Quantity | Formula |
+|----------|---------|
+| Sample proportion | $\hat p = \frac{x}{n}$ |
+| SE | $\sqrt{\frac{\hat p(1-\hat p)}{n}}$ |
+| Margin of error | $z^*\sqrt{\frac{\hat p(1-\hat p)}{n}}$ |
+| Sample SD | $\sqrt{\frac{n}{n-1}\hat p(1-\hat p)}$ |
+
+## Derivation
+
+$\hat p$ is a sample mean of 0/1 values; the CLT applied to the binomial count gives approximate normality, with the checks $np \ge 10$, $n(1-p) \ge 10$. [Full derivations: [[Central Limit Theorem]]]
+
+## Method
+
+1. Check the CLT conditions ($np$, $n(1-p) \ge 10$) and randomness.
+2. Compute $\hat p$, SE, then MoE with the right $z^*$.
+3. Report and interpret as a *method* statement.
+
+## Worked Examples
+
+**Setup:** $n = 250$, $x = 142$. 99% CI for $p$?
+
+**Solution:** $\hat p = 0.568$; $\text{SE} = \sqrt{0.568\times0.432/250} \approx 0.031$; $\text{MoE} = 2.58\times0.031 \approx 0.081$; CI $= [0.487, 0.649]$.
+
+**Key insight:** $s \approx 0.50$ (individual 0/1s) vs $\text{SE} \approx 0.031$ (the statistic) — averaging crushes the noise.
 
 ---
 
-**Setup:** $n = 250$, $x = 142$. Construct a 99% CI for $p$.
+**Setup:** Why quadruple the sample to halve the MoE?
 
-**Solution:** $\hat{p} = 142/250 = 0.568$. $s^2 = \frac{250}{249}(0.568)(0.432) \approx 0.2464$, $s \approx 0.50$. $\text{SE} = \sqrt{0.568 \times 0.432 / 250} \approx 0.0313$. $\text{MoE} = 2.58 \times 0.0313 \approx 0.081$. $\text{CI} = [0.487,\, 0.649]$.
+**Solution:** $\text{SE} \propto 1/\sqrt n$ — $n \to 4n$ halves the SE.
 
-**Key insight:** The sample standard deviation $s \approx 0.50$ measures variation among individual 0s and 1s. The standard error $\text{SE} \approx 0.031$ measures how much $\hat{p}$ itself varies — a much smaller number because averaging reduces noise.
+**Key insight:** The $\sqrt n$ trade-off: precision costs quadratically in sample size.
 
----
+## Common Traps
 
-**Setup:** A poll gives $\hat{p} = 0.54$, $\text{SE} = 0.05$. Find the 95% CI.
+- Confidence level vs interval width — 99% is always wider than 95% for the same data
+- Forgetting the CLT checks for proportions
+- Interpreting a single interval probabilistically
+- Using the sample SD where the SE belongs
 
-**Solution:** $\text{MoE} = 2 \times 0.05 = 0.10$. $\text{CI} = [0.44,\, 0.64]$.
+## Connections
 
-**Key insight:** The $z^* \approx 2$ shortcut for 95% is good enough for most purposes — the exact value 1.96 matters only when precision is critical.
-
----
-
-**Frequentist interpretation:** If we took many random samples of size $n = 250$ and built CIs the same way, about 99% of those intervals would contain the true $p$. The specific interval $[0.487, 0.649]$ either contains $p$ or it doesn't — we just don't know which. The confidence level quantifies our trust in the method, not in any single interval.
-
----
+- [[Introduction]] · [[Central Limit Theorem]] — why it's normal
+- [[Common Distributions]] — the binomial origin
+- [[Maths/Pure/01-Algebra/02-Indices/02-Indices]] — $\sqrt n$ scaling

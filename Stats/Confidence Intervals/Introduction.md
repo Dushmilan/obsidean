@@ -1,23 +1,53 @@
 # Introduction to Confidence Intervals
 
-A single poll result — say $\hat{p} = 0.54$ — looks precise, but it's just one snapshot from one sample. How much should you trust it? Confidence intervals answer that question by wrapping a margin of error around your estimate.
+## Definition
 
-**The Intuition:** Imagine fishing in a lake where the true proportion $p$ is a fish you can't see. Each sample is a cast of your net. A 95% confidence interval means if you cast 100 times, about 95 of those nets will capture the fish. You don't know which ones — but you know the method works 95% of the time.
+A confidence interval wraps a **margin of error** around an estimate:
 
-**The Math:** The standard error of a sample proportion is $\text{SE}(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$. For 95% confidence, multiply by $z^* \approx 1.96$ (or just 2) to get the margin of error: $\text{MoE} = 2 \times \text{SE}(\hat{p})$. The interval is $\text{CI} = \hat{p} \pm \text{MoE}$.
+$$\text{CI} = \hat{p} \pm \text{MoE}, \qquad \text{MoE} = z^*\times\text{SE}, \qquad \text{SE}(\hat{p}) = \sqrt{\frac{\hat p(1-\hat p)}{n}}$$
 
-**What does this mean for Statistics?** A confidence interval quantifies how much your estimate would vary if you repeated the study. It's the bridge between a single sample and a claim about the population — as long as you interpret it correctly (the probability is about the method, not the specific interval).
+For 95% confidence, $z^* \approx 1.96 \approx 2$.
 
----
+## The Intuition
 
-**Setup:** A poll shows $\hat{p} = 0.54$ with $\text{SE} = 0.05$. Construct a 95% CI.
+Fishing in a lake where the true proportion $p$ is a fish you can't see: each sample is a cast. A 95% CI means ~95 of 100 casts capture the fish — you don't know which ones, but the *method* works 95% of the time.
 
-**Solution:** $\text{MoE} = 2 \times 0.05 = 0.10$. $\text{CI} = 0.54 \pm 0.10 = [0.44,\, 0.64]$.
+## The Toolkit
 
-**Key insight:** We are 95% confident the true proportion $p$ lies between 44% and 64%. The width of this interval depends entirely on the standard error — smaller SE means tighter estimate.
+| Quantity | Formula |
+|----------|---------|
+| SE of proportion | $\sqrt{\frac{\hat p(1-\hat p)}{n}}$ |
+| Margin of error | $z^*\times\text{SE}$ |
+| 95% CI | $\hat p \pm 1.96\,\text{SE}$ |
+| 99% CI | $\hat p \pm 2.58\,\text{SE}$ |
 
----
+## Derivation
 
-**Interpretation trap:** "There's a 95% probability $p$ is in this interval" is technically wrong. The interval is fixed once calculated; $p$ is fixed too (we just don't know it). The 95% describes the long-run success rate of the procedure. Correct phrasing: "We are 95% confident that $p$ lies between..."
+The interval follows from the CLT: $\hat p$ is approximately normal, so ±2 SE captures ~95% of the sampling distribution. [Full derivations: [[Central Limit Theorem]]]
 
----
+## Method
+
+1. Check the sample is random and unbiased — otherwise the interval is centred wrong.
+2. Compute SE, then MoE = $z^*\times\text{SE}$.
+3. Report $\hat p \pm \text{MoE}$ with the correct interpretation.
+
+## Worked Examples
+
+**Setup:** $\hat p = 0.54$, $\text{SE} = 0.05$. 95% CI?
+
+**Solution:** $\text{MoE} = 0.10$; CI $= [0.44, 0.64]$.
+
+**Key insight:** Width depends entirely on the SE — tighter estimates need smaller SE.
+
+## Common Traps
+
+- "95% probability $p$ is in this interval" is wrong — the interval is fixed; 95% is the method's long-run success rate
+- A biased sample invalidates the interval — no formula repairs a bad sample
+- Confusing SE with SD
+- Interpreting the interval as containing individual data points
+
+## Connections
+
+- [[Estimating a population proportion]] · [[Central Limit Theorem]]
+- [[Sampling Methods]] · [[Bias in Sampling]] — the hidden assumptions
+- [[Maths/Pure/04-Calculus/01-Limits-Continuity/04.1-Limits-Continuity]] — convergence

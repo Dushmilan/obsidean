@@ -10,8 +10,8 @@ tags: [maths, physics, quantum, cross-ref]
 
 | Maths | Physics |
 |-------|---------|
-| [[Maths/Pure/03-Trigonometry/03.8-Complex-Numbers-De-Moivre|Maths: Complex Numbers]] | Physics: Quantum Mechanics |
-| [[Maths/Pure/04-Calculus/04-Calculus-Hub|Pure Maths: Calculus]] | Physics: Quantum Mechanics |
+| [[03.8-Complex-Numbers-De-Moivre]] | Physics: Quantum Mechanics |
+| [[Maths/Pure/04-Calculus/04-Calculus_Index]] | Physics: Quantum Mechanics |
 
 ## Maths Topics Used
 - Complex numbers (wave functions, Euler's formula)

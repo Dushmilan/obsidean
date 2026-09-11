@@ -10,7 +10,7 @@ tags: [maths, physics, em-induction, cross-ref]
 
 | Maths | Physics |
 |-------|---------|
-| [[Maths/Pure/04-Calculus/04-Calculus-Hub|Pure Maths: Calculus]] | [[Physics/05-Electricity-Magnetism/05.5-Electromagnetic-Induction|Physics: 5.5 EM Induction]] |
+| [[Maths/Pure/04-Calculus/04-Calculus_Index]] | [[Physics/05-Electricity-Magnetism/05.5-Electromagnetic-Induction]] |
 
 ## Maths Topics Used
 - Differentiation (EMF = -dΦ/dt, Faraday's law)

@@ -10,7 +10,7 @@ tags: [maths, physics, gravitation, cross-ref]
 
 | Maths | Physics |
 |-------|---------|
-| [[Maths/Pure/04-Calculus/04-Calculus-Hub|Pure Maths: Calculus]] | [[Physics/02-Mechanics/02.5-Gravitation|Physics: 2.5 Gravitation]] |
+| [[Maths/Pure/04-Calculus/04-Calculus_Index]] | [[Physics/02-Mechanics/02.5-Gravitation]] |
 
 ## Maths Topics Used
 - Integration (gravitational PE from Newton's law)

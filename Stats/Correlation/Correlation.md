@@ -1,25 +1,59 @@
 # Correlation
 
-Scatterplots show relationships, but we need a single number to summarise how strong and in what direction that relationship is. That number is the correlation coefficient $r$.
+## Definition
 
-**The Intuition:** Imagine plotting study hours vs exam scores. If every student who studies more scores higher, the points cluster along an upward line — strong positive correlation. If they scatter randomly, $r$ is near zero. If higher study hours somehow predict lower scores, $r$ is negative.
+A single number summarising the strength and direction of a linear relationship:
 
-**The Math:** The correlation coefficient is $r = \frac{1}{n-1}\sum z_{x_i} z_{y_i}$, where $z_{x_i} = \frac{x_i - \bar{x}}{s_x}$ and $z_{y_i} = \frac{y_i - \bar{y}}{s_y}$ are standardised scores. Equivalently: $r = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}}$.
+$$r = \frac{1}{n-1}\sum z_{x_i}z_{y_i} = \frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum(x_i-\bar{x})^2\sum(y_i-\bar{y})^2}}, \qquad r \in [-1, +1]$$
 
-**What does this mean for Statistics?** $r$ ranges from $-1$ to $+1$. Values near $\pm 1$ indicate strong linear relationships; values near $0$ indicate weak or no linear relationship. Correlation is the foundation for regression — you can't build a reliable prediction line without first knowing whether the relationship is strong enough to model.
+| $r$ | Interpretation |
+|-----|----------------|
+| $+1$ | perfect positive linear |
+| $0.7$–$1$ | strong positive |
+| $0$–$0.3$ | weak positive |
+| $0$ | no *linear* relationship |
+| $-0.7$ to $-1$ | strong negative |
+| $-1$ | perfect negative linear |
 
-| $r$ value | Interpretation |
-|-----------|----------------|
-| $+1$ | Perfect positive linear |
-| $+0.7$ to $+1$ | Strong positive |
-| $0$ to $+0.3$ | Weak positive |
-| $0$ | No linear relationship |
-| $0$ to $-0.3$ | Weak negative |
-| $-0.7$ to $-1$ | Strong negative |
-| $-1$ | Perfect negative linear |
+## The Intuition
 
----
+Plot study hours vs exam scores: points clustering along an upward line → strong positive $r$; random scatter → near 0; upward hours predicting lower scores → negative.
 
-**Key insight:** $r$ only measures *linear* relationships. A perfect parabolic relationship can have $r = 0$. Always look at the scatterplot — the number alone can mislead.
+## The Toolkit
 
----
+| Quantity | Formula |
+|----------|---------|
+| Correlation | $r = \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^2\sum(y-\bar{y})^2}}$ |
+| Standardised score | $z_x = \frac{x-\bar{x}}{s_x}$ |
+| $r$ in z-scores | $r = \frac{1}{n-1}\sum z_x z_y$ |
+
+## Derivation
+
+The numerator is the sum of cross-products of deviations — how $x$ and $y$ co-vary. The denominator standardises by each variable's total variation, forcing $r$ into $[-1,+1]$. Full derivations: [Pearson Coefficient Coefficient]
+
+## Method
+
+1. Always plot the scatterplot first — $r$ alone can mislead.
+2. Compute $r$; interpret direction (sign) and strength (magnitude).
+3. Check for outliers — they can inflate or deflate $r$ dramatically.
+
+## Worked Examples
+
+**Setup:** A perfect parabola. What is $r$?
+
+**Solution:** $r = 0$ — the relationship is strong but *not linear*.
+
+**Key insight:** $r$ only measures linear relationships — the number alone can mislead.
+
+## Common Traps
+
+- $r$ measures *linear* association only — curved relationships can have $r = 0$
+- Correlation doesn't imply causation
+- Outliers dominate $r$ — inspect the plot
+- Units don't matter ($r$ is unitless) but scaling does change $r$ for some formulas — use standardised form
+
+## Connections
+
+- [[Pearson Coefficient Coefficient]] · [[Linear Regression]] - the next step
+- [[Bias in Sampling]] - study design limits interpretation
+- [[Maths/Pure/01-Algebra/04-Polynomials/04-Polynomials]] - squared sums
